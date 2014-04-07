@@ -5,7 +5,7 @@ import time
 
 db = DAL("sqlite://storage.sqlite")
 
-#request.requires_https()
+request.requires_https()
 session.connect(request, response, separate=True)
 
 ## Autenticação

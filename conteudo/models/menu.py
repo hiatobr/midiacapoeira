@@ -18,7 +18,7 @@ response.menu = [
 	(IMG(_src=URL('static','images/video.png'), _alt='Material audiovisual'), False, URL('videos', 'index'), []),
 ]
 
-DEVELOPMENT_MENU = True
+DEVELOPMENT_MENU = False
 
 #########################################################################
 ## provide shortcuts for development. remove in production
