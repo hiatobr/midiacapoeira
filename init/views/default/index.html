@@ -1,0 +1,22 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+<p>Obrigado pelo interesse neste projeto.</p>
+<p>M&iacute;dia Capoeira &eacute; uma iniciativa em desenvolvimento de m&iacute;dia livre, independente e aut&ocirc;noma. Esta iniciativa difere de iniciativas de m&iacute;dia e jornalismo comerciais e alternativos, mas n&atilde;o se prenda neste discurso. Veja por si mesmx o trabalho e interprete (assim que ficar pronto <b>:D</b> ).</p>
+<p>Esta ferramenta pretende estabelecer um contraponto &agrave; forma tradicional de fazer jornalismo. Esta n&atilde;o &eacute; uma iniciativa isolada, ela traz influ&ecirc;ncias de trabalhos que v&ecirc;m sendo feitos pelo Brasil. Reitero, n&atilde;o tome minha palavra e n&atilde;o se alimente com discursos vazios, veja, avalie e julgue (assim que ficar pronto <b>:P</b> ).</p>
+<p>Por enquanto este site est&aacute; em desenvolvimento, e &eacute; justamente nesta hora que eu preciso de mais apoio. Utilizo a primeira pessoa porque M&iacute;dia Capoeira n&atilde;o &eacute; e nem pretende ser um coletivo, uma irmandade, uma fam&iacute;lia, um movimento. Isto &eacute; uma iniciativa individual que depende do apoio de v&aacute;rias pessoas para funcionar.</p>
+<p>Para contribuir, doe seu conte&uacute;do intelectual: ideias, cr&iacute;ticas, sugest&otilde;es, tapinhas nas costas, abra&ccedil;os, tudo isto me &eacute; &uacute;til. Dinheiro &eacute; in&uacute;til.</p>
+<p>Utilize o pad (link ao lado) para ver como anda o projeto e (principalmente) escrever, ou entre no chat, ou ent&atilde;o envie e-mail para o endere&ccedil;o indicado ao lado. Ou melhor ainda, me chame para tomar um caf&eacute;.</p>
+<p><b>NOVO:</b> Teste a p&aacute;gina de {{=A('Conteúdo', _href=URL(a='conteudo', c='default', f='index'))}}.</p>
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+{{block right_sidebar}}
+<h4>Links do projeto</h4>
+<ul>
+	<li><a href="http://padeiro.hi.ato.br/p/MidiaCapoeira" target="_blank">Pad</a>:<br />Documento colaborativo com documenta&ccedil;&atilde;o - aberto a edi&ccedil;&otilde;es e contribui&ccedil;&otilde;es&excl;</li>
+	<li>{{=A('Chat', _href=URL('chat', 'index'))}}:<br />Chat via WebIrc (freenode) - eu n&atilde;o fico o dia inteiro online, mande mensagem e aguarde&excl;</li>
+	<li><a href="mailto:capoeira@riseup.net">E-mail</a>:<br />Para entrar em contato diretamente com o autor, envie e-mail para capoeira&#64;riseup.net</li>
+</ul>
+{{end}}

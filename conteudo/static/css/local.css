@@ -1,0 +1,79 @@
+@charset 'UTF-8';
+/*
+	Estilos locais para midiacapoeira.in
+	capoeira@riseup.net
+	this file is released under public domain and you can use without limitations
+*/
+.nav img {
+	max-width:32px;
+	max-height:32px;
+}
+.index_imagens_grade li {
+	padding:1em;
+	display:inline-table;
+	text-decoration:none;
+}
+.index_imagens_grade img {
+	max-width:200px;
+	max-height:200px;
+	border-radius:5%;
+	box-shadow:0em 0em 0.5em 0.2em rgba(0,0,0,0.5);
+}
+.index_textos_grade li, .buscar_textos_grade li {
+	padding:1em;
+	display:inline-table;
+	text-decoration:none;
+}
+.index_textos_grade p, .buscar_textos_grade p {
+	padding:0.5em;
+	max-width:200px;
+	max-height:200px;
+	font-style:justify;
+	border-radius:5%;
+	box-shadow:0em 0em 0.5em 0.2em rgba(0,0,0,0.5);
+}
+.index_textos_menu {
+	padding:1em;
+}
+.index_textos_menu li {
+	padding:0.5em;
+	display:inline;
+	text-decoration:none;
+}
+.index_textos_menu a {
+	border-radius:10%;
+	padding:0.5em;
+	font-size:large;
+	box-shadow:0.3em 0.3em 0.5em 0em rgba(0,0,0,0.5);
+	text-decoration:none;
+}
+.ver_imagens_voltar a {
+	padding:1em;
+	font-size:large;
+}
+.ver_imagens_imagem {
+	padding:1em;
+}
+.ver_imagens_imagem img {
+	max-width:100%;
+	max-height:100%;
+	box-shadow:0em 0em 0.5em 0.2em rgba(0,0,0,0.5);
+}
+.ver_textos_voltar a {
+	padding:1em;
+	font-size:large;
+}
+.ver_textos_menu li {
+	padding:0.5em;
+	display:inline;
+	text-decoration:none;
+}
+.ver_textos_menu span {
+	padding:1em;
+}
+.ver_textos_tags li {
+	padding:0.5em;
+	display:inline;
+	text-decoration:none;
+}
+

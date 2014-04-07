@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+<h1>Textos</h1>
+<div class='index_textos_menu'>
+<ul>
+	{{=LI(A('Buscar', _href=URL('buscar')))}}
+	{{=LI(A('Enviar texto', _href=URL('enviar')))}}
+</ul>
+</div>
+<div class='index_textos_grade'>
+<ul>
+{{for text in texts:}}
+{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{pass}}
+</ul>
+</div>
+

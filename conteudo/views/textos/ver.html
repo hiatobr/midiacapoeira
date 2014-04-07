@@ -1,0 +1,49 @@
+{{extend 'layout.html'}}
+<div class='ver_textos_voltar'>
+{{=A('Voltar', _href=URL(a='conteudo', c='textos', f='index'))}}
+</div>
+<center>
+<div class='ver_textos_texto'>
+{{=TEXTAREA(text.body, _readonly='readonly', _rows='20')}}
+</div>
+</center>
+<br />
+<div class='ver_textos_menu'>
+<ul>
+{{if len(text.author):}}
+{{=LI(SPAN("Autor: ", A(text.author, _href=URL('buscar', vars=dict(autor=text.author)))))}}
+{{pass}}
+{{if len(text.email):}}
+{{=LI(SPAN("E-mail: ", A(text.email, _href=URL('buscar', vars=dict(email=text.email)))))}}
+{{pass}}
+{{if len(tags):}}
+	<li>Tags: </li>
+	{{for tag in tags:}}
+		{{=LI(A(SPAN("#",tag.tag), _href=URL('buscar', vars=dict(tag=tag.tag))))}}
+	{{pass}}
+{{else:}}
+	<span>Nenhuma tag atribuída a este texto ainda. Facilite o sistema de busca adicionando tags:</span>
+{{pass}}
+</ul>
+</div>
+<div class='ver_textos_tags'>
+<h2>Adicionar tags</h2>
+{{=formT}}
+</div>
+<div class='ver_textos_comentarios'>
+{{if len(comments):}}
+	<h2>Comentários</h2><br /><p>
+	{{for post in comments:}}
+		<p>{{if len(post.email):}}
+		{{=A(post.author, _href="mailto:"+post.email)}}
+		{{else:}}
+		{{=post.author}}
+		{{pass}} diz: <i>{{=post.body}}</i></p>
+	{{pass}}</p>
+{{else:}}
+	<h2>Nenhum comentário ainda. Incentive a dissidência e o contraditório dando a tua opninião:</h2>
+{{pass}}
+<h2>Comentar</h2>
+{{=formC}}
+</div>
+

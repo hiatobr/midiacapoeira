@@ -1,0 +1,53 @@
+{{extend 'layout.html'}}
+{{if len(tag) or len(author) or len(email) or len(texto):}}
+<h1>Busca de textos</h1>
+<p>
+{{if (tag):}}
+Tag: #{{=SPAN(tag)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag='',autor=author,email=email,texto=texto,)))}})
+{{pass}}
+{{if (author):}}
+Autor: {{=SPAN(author)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,email=email,)))}})
+{{pass}}
+{{if (email):}}
+Email: {{=SPAN(email)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,autor=author,)))}})
+{{pass}}
+{{if (texto):}}
+Conteúdo do texto: {{=SPAN('"',texto,'"')}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,autor=author,)))}})
+{{pass}}
+</h1>
+<div class='index_textos_menu'>
+<ul>
+	{{=LI(A('Todos os textos', _href=URL('index')))}}
+	{{=LI(A('Nova busca', _href=URL('buscar')))}}
+	{{=LI(A('Enviar texto', _href=URL('enviar')))}}
+</ul>
+</div>
+<div class='buscar_textos_grade'>
+<ul>
+{{if len(tags):}}
+{{for text in tags:}}
+{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{pass}}
+{{pass}}
+{{if len(authors):}}
+{{for text in authors:}}
+{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{pass}}
+{{pass}}
+{{if len(emails):}}
+{{for text in emails:}}
+{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{pass}}
+{{pass}}
+{{if len(textos):}}
+{{for text in textos:}}
+{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{pass}}
+{{pass}}
+</ul>
+</div>
+{{else:}}
+<h2>Busca</h2>
+{{=form}}
+{{pass}}
+

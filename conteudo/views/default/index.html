@@ -1,0 +1,19 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{if 'message' in globals():}}
+<h3>{{=message}}</h3>
+<p>&Eacute; poss&iacute;vel enviar conte&uacute;do para a midiacapoeira.in em carater de <b>TESTE</b>.</p>
+<p>No momento &eacute; poss&iacute;vel enviar blocos de texto, visualizar blocos de texto enviados, e criar coment&aacute;rios neles.</p>
+<p>&Eacute; poss&iacute;vel visualizar fotografias enviadas, e criar coment&aacute;rios nelas. N&atilde;o &eacute; poss&iacute;vel enviar novas fotografias por enquanto.</p>
+<p>N&atilde;o &eacute; poss&iacute;vel enviar, visualizar e criar coment&aacute;rios em v&iacute;deos por enquanto. Tampouco em &aacute;udios.</p>
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+{{block right_sidebar}}
+<h4>Links do projeto</h4>
+<ul>
+	<li><a href="http://padeiro.hi.ato.br/p/MidiaCapoeira" target="_blank">Pad</a>:<br />Documento colaborativo com documenta&ccedil;&atilde;o - aberto a edi&ccedil;&otilde;es e contribui&ccedil;&otilde;es&excl;</li>
+	<li>{{=A('Chat', _href=URL('chat', 'index'))}}:<br />Chat via WebIrc (freenode) - eu n&atilde;o fico o dia inteiro online, mande mensagem e aguarde&excl;</li>
+	<li><a href="mailto:capoeira@riseup.net">E-mail</a>:<br />Para entrar em contato diretamente com o autor, envie e-mail para capoeira&#64;riseup.net</li>
+</ul>
+{{end}}
