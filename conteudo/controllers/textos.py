@@ -100,7 +100,7 @@ def buscar():
 			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.text.data)
 		]
 
-	form = FORM('Busca:', BR(), 'Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
+	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
 
 	return dict(tag=tag, autor=autor, email=email, texto=texto, tags=tags, autores=autores, emails=emails, textos=textos, form=form)
 
