@@ -86,6 +86,12 @@ db.define_table(
 		default='Anônimx',
 	),
 	Field(
+		'fonte',
+	),
+	Field(
+		'licenca',
+	),
+	Field(
 		'email',
 	),
 )
@@ -114,11 +120,73 @@ db.define_table(
 	Field('text_id', 'reference text'),
 	Field('tag'),
 )
+db.define_table(
+	'texto',
+	Field(
+		'conteudo',
+		'text',
+		required=True,
+		notnull=True,
+	),
+	Field(
+		'data',
+		default=int(time.strftime('%s', time.localtime())),
+		update=int(time.strftime('%s', time.localtime())),
+		writable=False,
+		readable=True,
+		notnull=True,
+	),
+	Field(
+		'autor',
+		default='Anônimx',
+	),
+	Field(
+		'fonte',
+	),
+	Field(
+		'licenca',
+	),
+	Field(
+		'email',
+	),
+)
+db.define_table(
+	'texto_post',
+	Field(
+		'texto_id',
+		'reference texto',
+	),
+	Field(
+		'autor',
+		default='Anônimx',
+	),
+	Field(
+		'email',
+	),
+	Field(
+		'conteudo',
+		'text',
+		required=True,
+		notnull=True,
+	),
+)
+db.define_table(
+	'texto_tag',
+	Field('texto_id', 'reference texto'),
+	Field('tag'),
+)
+
 db.text.body.requires = IS_NOT_EMPTY()
+db.texto.conteudo.requires = IS_NOT_EMPTY()
 db.post_text.body.requires = IS_NOT_EMPTY()
 db.post_text.text_id.requires = IS_IN_DB(db, db.image.id)
 db.post_text.text_id.readable = db.post_text.text_id.writable = False
-db.tag_text.text_id.requires = IS_IN_DB(db, db.image.id)
+db.tag_text.text_id.requires = IS_IN_DB(db, db.text.id)
 db.tag_text.text_id.readable = db.tag_text.text_id.writable = False
+db.texto_post.conteudo.requires = IS_NOT_EMPTY()
+db.texto_post.texto_id.requires = IS_IN_DB(db, db.texto.id)
+db.texto_post.texto_id.readable = db.texto_post.texto_id.writable = False
+db.texto_tag.texto_id.requires = IS_IN_DB(db, db.texto.id)
+db.texto_tag.texto_id.readable = db.texto_tag.texto_id.writable = False
 ## /Tabelas para Textos
 
