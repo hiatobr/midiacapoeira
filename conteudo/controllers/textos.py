@@ -8,35 +8,35 @@
 ## Padrão é mostrar os últimos textos em grade na página inicial
 def index():
 	response.flash = 'Últimos textos'
-	texts = [
+	textos = [
 		dict(
-			id = text['id'],
-			body = text['body'],
+			id = texto['id'],
+			conteudo = texto['conteudo'],
 		)
-		for text in db().select(db.text.ALL, orderby=~db.text.date)
+		for texto in db().select(db.texto.ALL, orderby=~db.texto.data)
 	]
-	return dict(texts=texts)
+	return dict(textos=textos)
 
 ## Utilizado para visualizar um bloco de texto específico, assim como ver e enviar comentários
 def ver():
 	response.flash = 'Visualizar texto'
-	text = db.text(request.args(0,cast=int)) or redirect(URL('index'))
-	db.post_text.text_id.default = text.id
-	db.tag_text.text_id.default = text.id
-	formC = SQLFORM(db.post_text)
+	texto = db.texto(request.args(0,cast=int)) or redirect(URL('index'))
+	db.texto_post.texto_id.default = texto.id
+	db.texto_tag.texto_id.default = texto.id
+	formC = SQLFORM(db.texto_post)
 	if formC.process().accepted:
 		response.flash = 'Comentário publicado'
-	formT = SQLFORM(db.tag_text)
+	formT = SQLFORM(db.texto_tag)
 	if formT.process().accepted:
 		response.flash = 'Tag adicionada'
-	comments = db(db.post_text.text_id==text.id).select()
-	tags = db(db.tag_text.text_id==text.id).select()
-	return dict(text=text, comments=comments, tags=tags, formC=formC, formT=formT)
+	comentarios = db(db.texto_post.texto_id==texto.id).select()
+	tags = db(db.texto_tag.texto_id==texto.id).select()
+	return dict(texto=texto, comentarios=comentarios, tags=tags, formC=formC, formT=formT)
 
 ## Utilizado para enviar blocos de texto
 def enviar():
-	response.flash = 'Enviar texto'
-	form = SQLFORM(db.text).process(next=URL('index'))
+	response.flash = 'Enviar texto para midiacapoeira.in'
+	form = SQLFORM(db.texto).process(next=URL('index'))
 	return dict(form=form)
 
 ## [interna] Serve para recuperar um bloco de texto do banco de dados
@@ -51,6 +51,7 @@ def user():
 ## Utilizado para buscar textos po tag, autor e email. Busca DENTRO de textos ainda não está feita.
 def buscar():
 	response.flash = 'Buscar em textos'
+
 	tag = ''
 	author = ''
 	email = ''
@@ -59,6 +60,7 @@ def buscar():
 	authors = dict()
 	emails = dict()
 	textos = dict()
+
 	if (request.vars.tag) and len(request.vars.tag):
 		tag = request.vars.tag
 		tags_it = db(db.tag_text.tag == tag).select(db.tag_text.text_id)
@@ -97,7 +99,9 @@ def buscar():
 			)
 			for texto_it in db(db.text.body.contains(texto)).select(db.text.ALL, orderby=~db.text.date)
 		]
+
 	form = FORM('Busca:', BR(), 'Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
+
 	return dict(tag=tag, author=author, email=email, texto=texto, tags=tags, authors=authors, emails=emails, textos=textos, form=form)
 
 ## FIXME: RSS não está funcionando!

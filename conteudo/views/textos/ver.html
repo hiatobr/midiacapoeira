@@ -1,49 +1,52 @@
 {{extend 'layout.html'}}
 <div class='ver_textos_voltar'>
-{{=A('Voltar', _href=URL(a='conteudo', c='textos', f='index'))}}
+{{=P(A('Voltar', _href=URL(a='conteudo', c='textos', f='index')))}}
 </div>
 <center>
 <div class='ver_textos_texto'>
-{{=TEXTAREA(text.body, _readonly='readonly', _rows='20')}}
+{{=TEXTAREA(texto.conteudo, _readonly='readonly', _rows='20')}}
 </div>
 </center>
 <br />
 <div class='ver_textos_menu'>
 <ul>
-{{if len(text.author):}}
-{{=LI(SPAN("Autor: ", A(text.author, _href=URL('buscar', vars=dict(autor=text.author)))))}}
+{{if len(texto.fonte):}}
+{{=LI(SPAN("Fonte: ", A(texto.fonte, _href=URL('buscar', vars=dict(fonte=texto.fonte)))))}}
 {{pass}}
-{{if len(text.email):}}
-{{=LI(SPAN("E-mail: ", A(text.email, _href=URL('buscar', vars=dict(email=text.email)))))}}
+{{if len(texto.autor):}}
+{{=LI(SPAN("Autor: ", A(texto.autor, _href=URL('buscar', vars=dict(autor=texto.autor)))))}}
+{{pass}}
+{{if len(texto.email):}}
+{{=LI(SPAN("E-mail: ", A(texto.email, _href=URL('buscar', vars=dict(email=texto.email)))))}}
 {{pass}}
 {{if len(tags):}}
 	<li>Tags: </li>
 	{{for tag in tags:}}
 		{{=LI(A(SPAN("#",tag.tag), _href=URL('buscar', vars=dict(tag=tag.tag))))}}
 	{{pass}}
-{{else:}}
-	<span>Nenhuma tag atribuída a este texto ainda. Facilite o sistema de busca adicionando tags:</span>
 {{pass}}
 </ul>
 </div>
 <div class='ver_textos_tags'>
-<h2>Adicionar tags</h2>
+{{=H4('Adicionar tags')}}
 {{=formT}}
 </div>
 <div class='ver_textos_comentarios'>
-{{if len(comments):}}
-	<h2>Comentários</h2><br /><p>
-	{{for post in comments:}}
-		<p>{{if len(post.email):}}
-		{{=A(post.author, _href="mailto:"+post.email)}}
+{{if len(comentarios):}}
+	{{=H4('Comentários')}}
+	<p>
+	{{for comentario in comentarios:}}
+		<p>{{if len(comentario.email):}}
+		{{=A(comentario.autor, _href="mailto:"+comentario.email)}}
 		{{else:}}
-		{{=post.author}}
-		{{pass}} diz: <i>{{=post.body}}</i></p>
-	{{pass}}</p>
+		{{=comentario.autor}}
+		{{pass}} diz: <i>{{=comentario.conteudo}}</i></p>
+	{{pass}}
+	</p>
 {{else:}}
-	<h2>Nenhum comentário ainda. Incentive a dissidência e o contraditório dando a tua opninião:</h2>
+	{{=H4("Nenhum comentário ainda. Incentive a dissidência e o contraditório dando a tua opinião:")}}
 {{pass}}
-<h2>Comentar</h2>
+{{=H3('Comentar')}}
 {{=formC}}
 </div>
 

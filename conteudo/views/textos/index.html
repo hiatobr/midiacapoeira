@@ -8,8 +8,8 @@
 </div>
 <div class='index_textos_grade'>
 <ul>
-{{for text in texts:}}
-{{=LI(P(XML(text['body'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=text['id']))))}}
+{{for texto in textos:}}
+{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 {{pass}}
 </ul>
 </div>

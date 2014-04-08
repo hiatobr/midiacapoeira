@@ -1,4 +1,10 @@
 {{extend 'layout.html'}}
-<h1>Enviar texto</h1>
-[ {{=A('ver', _href=URL('ver', args=request.args))}} ]<br />
+{{=H2("Enviar texto")}}
+{{=H4("Termos para envio (se não concordar, não envie!):")}}
+<ul>
+{{=LI("Não é necessário se cadastrar, se identificar, nem preencher nenhum registro com dados pessoais. Envie o que quiser e como quiser.")}}
+{{=LI("A licença padrão é ", A("The Unlicense", _href=("http://unlicense.org/")), ". Se quiser controlar o compartilhamento, utilize uma licença diferente no campo 'Licença'. A licença DEVE ser uma das disponíveis na lista. Não são aceitas licenças restritivas, de acordo com os ", A('Termos de serviço', _href=URL('init', 'sobre', 'termos')), ".")}}
+{{=LI("Se quiser copiar texto de outros lugares, é de suma importância que a fonte seja citada. Para isto existe o campo 'Fonte'. Se isto não for feito, é capaz de gente imbecil querer fechar o site porque tem conteúdo de terceiros aqui.")}}
+{{=LI("O administrador do banco de dados é sádico. Eu te garanto que ele NÃO vai apagar NADA. Depois que enviar, não tem choro. Se tu te arrepende do que tu escreve, não informe teu nome nem teu e-mail.")}}
+</ul>
 {{=form}}
