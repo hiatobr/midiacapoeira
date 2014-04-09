@@ -171,8 +171,15 @@ db.define_table(
 )
 db.define_table(
 	'texto_tag',
-	Field('texto_id', 'reference texto'),
-	Field('tag'),
+	Field(
+		'texto_id',
+		'reference texto'
+	),
+	Field(
+		'tag',
+		required=True,
+		notnull=True,
+	),
 )
 
 db.text.body.requires = IS_NOT_EMPTY()
