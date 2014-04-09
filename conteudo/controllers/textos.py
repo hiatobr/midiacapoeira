@@ -53,12 +53,16 @@ def buscar():
 	response.flash = 'Buscar em textos'
 
 	tag = ''
+	fonte = ''
 	autor = ''
 	email = ''
+	licenca = ''
 	texto = ''
 	tags = dict()
+	fontes = dict()
 	autores = dict()
 	emails = dict()
+	licencas = dict()
 	textos = dict()
 
 	if (request.vars.tag) and len(request.vars.tag):
@@ -72,23 +76,41 @@ def buscar():
 				)
 				for tag_it in tags_it
 			]
+	if (request.vars.fonte) and len(request.vars.fonte):
+		fonte = request.vars.fonte
+		fontes = [
+			dict (
+				id = fonte_it['texto.id'],
+				conteudo = fonte_it['texto.conteudo'],
+			)
+			for fonte_it in db(db.texto.fonte == fonte).select(db.texto.ALL, orderby=~db.texto.data)
+		]
 	if (request.vars.autor) and len(request.vars.autor):
 		autor = request.vars.autor
 		autores = [
 			dict (
-				id = autor_it['text.id'],
-				conteudo = autor_it['text.conteudo'],
+				id = autor_it['texto.id'],
+				conteudo = autor_it['texto.conteudo'],
 			)
-			for autor_it in db(db.texto.autor == autor).select(db.texto.ALL, orderby=~db.text.data)
+			for autor_it in db(db.texto.autor == autor).select(db.texto.ALL, orderby=~db.texto.data)
 		]
 	if (request.vars.email) and len(request.vars.email):
 		email = request.vars.email
 		emails = [
 			dict (
-				id = email_it['text.id'],
-				conteudo = email_it['text.conteudo'],
+				id = email_it['texto.id'],
+				conteudo = email_it['texto.conteudo'],
 			)
 			for email_it in db(db.texto.email == email).select(db.texto.ALL, orderby=~db.texto.data)
+		]
+	if (request.vars.licenca) and len(request.vars.licenca):
+		licenca = request.vars.licenca
+		licencas = [
+			dict (
+				id = licenca_it['texto.id'],
+				conteudo = licenca_it['texto.conteudo'],
+			)
+			for licenca_it in db(db.texto.licenca == licenca).select(db.texto.ALL, orderby=~db.texto.data)
 		]
 	if (request.vars.texto) and len(request.vars.texto):
 		texto = request.vars.texto
@@ -97,12 +119,12 @@ def buscar():
 				id = texto_it['text.id'],
 				conteudo = texto_it['text.conteudo'],
 			)
-			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.text.data)
+			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.texto.data)
 		]
 
 	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
 
-	return dict(tag=tag, autor=autor, email=email, texto=texto, tags=tags, autores=autores, emails=emails, textos=textos, form=form)
+	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, texto=texto, tags=tags, fontes=fontes, autores=autores, emails=emails, textos=textos, licencas=licencas, form=form)
 
 ## FIXME: RSS não está funcionando!
 #def rss():
