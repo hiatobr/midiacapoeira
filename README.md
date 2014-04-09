@@ -8,7 +8,7 @@ Este repositório não contém todo o código de Web2Py. O conteúdo deste
 repositório deve ser copiado para o diretório **applications** do Web2Py.
 
 [Web2Py](http://web2py.com) tem licença específica e o repositório encontra-se em
-(https://github.com/EnigmaCurry/web2py).
+(https://github.com/web2py/web2py).
 
 > Copywrong (W) 2014 Mídia Capoeira
 
