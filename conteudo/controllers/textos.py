@@ -20,17 +20,47 @@ def index():
 ## Utilizado para visualizar um bloco de texto específico, assim como ver e enviar comentários
 def ver():
 	response.flash = 'Visualizar texto'
+
 	texto = db.texto(request.args(0,cast=int)) or redirect(URL('index'))
+
 	db.texto_post.texto_id.default = texto.id
 	db.texto_tag.texto_id.default = texto.id
-	formC = SQLFORM(db.texto_post)
+
+	formC = SQLFORM(
+		db.texto_post,
+		labels = {
+			'autor':"Autor",
+			'email':"E-mail",
+			'conteudo':"Conteúdo",
+		},
+		col3 = {
+			'autor':"Não é necessário se cadastrar ou se identificar.",
+			'email':"Caso fornecido, SERÁ publicado.",
+			'conteudo':SPAN("Comentários podem ser apagados de forma arbitrária conforme a ", A('política do site', _href=URL('init', 'sobre', 'termos')), "."),
+		},
+		submit_button = 'Enviar',
+		table_name = 'comentarios',
+	)
 	if formC.process().accepted:
 		response.flash = 'Comentário publicado'
-	formT = SQLFORM(db.texto_tag)
+	elif formC.errors:
+		response.flash = 'Comentário NÃO publicado'
+
+	formT = SQLFORM.factory(
+		db.texto_tag,
+		labels = {
+			'tag':"Adicionar tags",
+		},
+		table_name = 'tags',
+	)
 	if formT.process().accepted:
 		response.flash = 'Tag adicionada'
+	elif formC.errors:
+		response.flash = 'Tag NÃO adicionada'
+
 	comentarios = db(db.texto_post.texto_id==texto.id).select()
 	tags = db(db.texto_tag.texto_id==texto.id).select()
+
 	return dict(texto=texto, comentarios=comentarios, tags=tags, formC=formC, formT=formT)
 
 ## Utilizado para enviar blocos de texto
