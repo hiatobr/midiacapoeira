@@ -51,6 +51,7 @@ def ver():
 		labels = {
 			'tag':"Adicionar tags",
 		},
+		submit_button = 'Enviar',
 		table_name = 'tags',
 	)
 	if formT.process().accepted:
