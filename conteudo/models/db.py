@@ -137,7 +137,7 @@ db.define_table(
 	),
 	Field(
 		'autor',
-		default='Anônimx',
+		default='Alguém',
 	),
 	Field(
 		'fonte',
@@ -157,7 +157,7 @@ db.define_table(
 	),
 	Field(
 		'autor',
-		default='Anônimx',
+		default='Alguém',
 	),
 	Field(
 		'email',
