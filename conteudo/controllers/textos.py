@@ -46,7 +46,7 @@ def ver():
 	elif formC.errors:
 		response.flash = 'Comentário NÃO publicado'
 
-	formT = SQLFORM.factory(
+	formT = SQLFORM(
 		db.texto_tag,
 		labels = {
 			'tag':"Adicionar tags",
