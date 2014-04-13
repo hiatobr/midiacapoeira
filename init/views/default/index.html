@@ -9,14 +9,15 @@
 <p>Para contribuir, doe seu conte&uacute;do intelectual: ideias, cr&iacute;ticas, sugest&otilde;es, tapinhas nas costas, abra&ccedil;os, tudo isto me &eacute; &uacute;til. Dinheiro &eacute; in&uacute;til.</p>
 <p>Utilize o pad (link ao lado) para ver como anda o projeto e (principalmente) escrever, ou entre no chat, ou ent&atilde;o envie e-mail para o endere&ccedil;o indicado ao lado. Ou melhor ainda, me chame para tomar um caf&eacute;.</p>
 <p><b>NOVO:</b> Teste a p&aacute;gina de {{=A('Conteúdo', _href=URL(a='conteudo', c='default', f='index'))}}.</p>
+<p><b>NOVO:</b> O c&oacute;digo fonte deste site est&aacute; em </p>
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 {{block right_sidebar}}
-<h4>Links do projeto</h4>
+{[H4(Links do projeto)}}
 <ul>
-	<li><a href="http://padeiro.hi.ato.br/p/MidiaCapoeira" target="_blank">Pad</a>:<br />Documento colaborativo com documenta&ccedil;&atilde;o - aberto a edi&ccedil;&otilde;es e contribui&ccedil;&otilde;es&excl;</li>
-	<li>{{=A('Chat', _href=URL('chat', 'index'))}}:<br />Chat via WebIrc (freenode) - eu n&atilde;o fico o dia inteiro online, mande mensagem e aguarde&excl;</li>
-	<li><a href="mailto:capoeira@riseup.net">E-mail</a>:<br />Para entrar em contato diretamente com o autor, envie e-mail para capoeira&#64;riseup.net</li>
+	{{=LI(A('Pad', _href=URL('http://padeiro.hi.ato.br/p/MidiaCapoeira'), _target='_blank'):BR()Documento colaborativo com documentação - aberto a edições e contribuições!)}}
+	{{=LI(A('Chat', _href=URL('chat', 'index'))}}:<br />Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde!)}}
+	{{=LI(A('E-mail', _href=URL('mailto:capoeira@riseup.net')):BR()Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net)}}
 </ul>
 {{end}}
