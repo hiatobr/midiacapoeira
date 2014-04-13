@@ -17,7 +17,7 @@ def index():
 	]
 	return dict(textos=textos)
 
-## Utilizado para visualizar um bloco de texto específico, assim como ver e enviar comentários
+## Utilizado para visualizar um bloco de texto específico, assim como ver e enviar comentários e tags
 def ver():
 	response.flash = 'Visualizar texto'
 
