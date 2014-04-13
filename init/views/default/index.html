@@ -9,16 +9,15 @@
 <p>Para contribuir, doe seu conte&uacute;do intelectual: ideias, cr&iacute;ticas, sugest&otilde;es, tapinhas nas costas, abra&ccedil;os, tudo isto me &eacute; &uacute;til. Dinheiro &eacute; in&uacute;til.</p>
 <p>Utilize o pad (link ao lado) para ver como anda o projeto e (principalmente) escrever, ou entre no chat, ou ent&atilde;o envie e-mail para o endere&ccedil;o indicado ao lado. Ou melhor ainda, me chame para tomar um caf&eacute;.</p>
 <p><b>NOVO:</b> Teste a p&aacute;gina de {{=A('Conteúdo', _href=URL(a='conteudo', c='default', f='index'))}}.</p>
-<p><b>NOVO:</b> O c&oacute;digo fonte deste site est&aacute; em </p>
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 {{block right_sidebar}}
-{[H4(Links do projeto)}}
+{{=H4('Links do projeto')}}
 <ul>
-	{{=LI(A('Pad', _href=URL('http://padeiro.hi.ato.br/p/MidiaCapoeira'), _target='_blank'):BR()Documento colaborativo com documentação - aberto a edições e contribuições!)}}
-	{{=LI(A('Chat', _href=URL('chat', 'index'))}}:<br />Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde!)}}
-	{{=LI(Código fonte no Github: A('https://github.com/hiatobr/midiacapoeira.in', _href=URL('https://github.com/hiatobr/midiacapoeira.in')).}}
-	{{=LI(A('E-mail', _href=URL('mailto:capoeira@riseup.net')):BR()Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net)}}
+	{{=LI(A('Pad', _href=URL('http://padeiro.hi.ato.br/p/MidiaCapoeira'), _target='_blank'), ':', BR(), 'Documento colaborativo com documentação - aberto a edições e contribuições!')}}
+	{{=LI(A('Chat', _href=URL('chat', 'index')), ':', BR(), 'Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde!')}}
+	{{=LI(A('Código', _href=URL('https://github.com/hiatobr/midiacapoeira.in')), ':', BR(), 'Código fonte de midiacapoeira.in no Github.')}}
+	{{=LI(A('E-mail', _href=URL('mailto:capoeira@riseup.net')), ':', BR(), 'Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net')}}
 </ul>
 {{end}}
