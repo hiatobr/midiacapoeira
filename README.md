@@ -12,7 +12,6 @@ Receita de bolo:
 ```
 git clone https://github.com/web2py/web2py.git
 git clone https://github.com/hiatobr/midiacapoeira.in.git web2py/applications
-cd ../..
 python web2py.py
 ```
 
