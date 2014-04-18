@@ -26,7 +26,7 @@ db.define_table(
 	),
 	Field(
 		'data',
-		'datetime',
+		'integer',
 		default=int(time.strftime('%s', time.localtime())),
 		update=int(time.strftime('%s', time.localtime())),
 		writable=False,
@@ -115,7 +115,7 @@ db.define_table(
 	),
 	Field(
 		'data',
-		'datetime',
+		'integer',
 		default=int(time.strftime('%s', time.localtime())),
 		update=int(time.strftime('%s', time.localtime())),
 		writable=False,

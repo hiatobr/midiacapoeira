@@ -48,6 +48,9 @@ def ver():
 
 	formT = SQLFORM(
 		db.texto_tag,
+		fields = [
+			'tag',
+		],
 		labels = {
 			'tag':"Adicionar tags",
 		},
@@ -67,7 +70,23 @@ def ver():
 ## Utilizado para enviar blocos de texto
 def enviar():
 	response.flash = 'Enviar texto para midiacapoeira.in'
-	form = SQLFORM(db.texto).process(next=URL('index'))
+	form = SQLFORM(
+		db.texto,
+		fields = [
+			'conteudo',
+			'autor',
+			'email',
+			'fonte',
+			'licenca',
+		],
+		labels = {
+			'conteudo':"Conteúdo",
+			'autor':"Autor",
+			'email':"E-mail",
+			'fonte':"Fonte",
+			'licenca':"Licença",
+		},
+	).process(next=URL('index'))
 	return dict(form=form)
 
 ## [interna] Serve para recuperar um bloco de texto do banco de dados
@@ -79,7 +98,8 @@ def download():
 def user():
 	return dict(form=auth())
 
-## Utilizado para buscar textos po tag, autor e email. Busca DENTRO de textos ainda não está feita.
+## Utilizado para buscar textos por tag, autor, email, fonte, licença, conteúdo do texto.
+## TODO: Resultados estão aparecendo repetidos. Isto acontece em decorrência da natureza da busca disposta no view buscar.html
 def buscar():
 	response.flash = 'Buscar em textos'
 
@@ -152,10 +172,9 @@ def buscar():
 			)
 			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.texto.data)
 		]
+	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), SPAN('Fonte :'), INPUT(_name='fonte'), BR(), SPAN('Licença: '), INPUT(_name='licenca'), BR(), SPAN('Conteúdo do texto: '), INPUT(_name='texto'), BR(), INPUT(_type='submit'))
 
-	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
-
-	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, texto=texto, tags=tags, fontes=fontes, autores=autores, emails=emails, textos=textos, licencas=licencas, form=form)
+	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, texto=texto, tags=tags, fontes=fontes, autores=autores, emails=emails, licencas=licencas, textos=textos, form=form)
 
 ## FIXME: RSS não está funcionando!
 #def rss():

@@ -2,23 +2,23 @@
 {{if len(tag) or len(fonte) or len(autor) or len(email) or len(licenca) or len(texto):}}
 <h1>Busca de textos</h1>
 <p>
-{{if (tag):}}
-Tag: #{{=SPAN(tag)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag='',fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto,)))}})
+{{if len(tag):}}
+Tag: #{{=SPAN(tag)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag='',fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto)))}})
 {{pass}}
-{{if (fonte):}}
-Fonte: {{=SPAN(fonte)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto,)))}})
+{{if len(fonte):}}
+Fonte: {{=SPAN(fonte)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto)))}})
 {{pass}}
-{{if (autor):}}
-Autor: {{=SPAN(autor)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor='',email=email,licenca=licenca,texto=texto,)))}})
+{{if len(autor):}}
+Autor: {{=SPAN(autor)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor='',email=email,licenca=licenca,texto=texto)))}})
 {{pass}}
-{{if (email):}}
-Email: {{=SPAN(email)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email='',licenca=licenca,texto=texto,)))}})
+{{if len(email):}}
+Email: {{=SPAN(email)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email='',licenca=licenca,texto=texto)))}})
 {{pass}}
-{{if (licenca):}}
-Licença: {{=SPAN(licenca)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca='',texto=texto,)))}})
+{{if len(licenca):}}
+Licença: {{=SPAN(licenca)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca='',texto=texto)))}})
 {{pass}}
-{{if (texto):}}
-Conteúdo do texto: {{=SPAN('"',texto,'"')}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,texto='',)))}})
+{{if len(texto):}}
+Conteúdo do texto: {{=SPAN(texto)}} ({{=A("remover", _href=URL('buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,texto='')))}})
 {{pass}}
 </h1>
 <div class='index_textos_menu'>
@@ -32,32 +32,33 @@ Conteúdo do texto: {{=SPAN('"',texto,'"')}} ({{=A("remover", _href=URL('buscar'
 <ul>
 {{if len(tags):}}
 	{{for texto in tags:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 	{{pass}}
 {{pass}}
 {{if len(fontes):}}
 	{{for texto in fontes:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 	{{pass}}
 {{pass}}
 {{if len(autores):}}
 	{{for texto in autores:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 	{{pass}}
 {{pass}}
 {{if len(emails):}}
 	{{for texto in emails:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 	{{pass}}
 {{pass}}
 {{if len(licencas):}}
 	{{for texto in licencas:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
 	{{pass}}
 {{pass}}
-	{{if len(textos):}}
+{{if len(textos):}}
 	{{for texto in textos:}}
-	{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}{{pass}}
+		{{=LI(P(XML(texto['conteudo'][:250], sanitize=True),"...",BR(),A('Ler todo texto / comentar', _href=URL('ver', args=texto['id']))))}}
+	{{pass}}
 {{pass}}
 </ul>
 </div>

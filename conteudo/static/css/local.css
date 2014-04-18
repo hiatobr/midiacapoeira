@@ -76,7 +76,11 @@
 	display:inline;
 	text-decoration:none;
 }
-input {
-	
+.ver_textos_tags li.tags_tag a {
+	font-size:large;
+}
+.ver_textos_tags li.tags_tag img {
+	max-width:16px;
+	max-height:16px;
 }
 

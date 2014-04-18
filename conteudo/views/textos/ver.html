@@ -16,19 +16,23 @@
 {{if len(texto.autor):}}
 {{=LI(SPAN("Autor: ", A(texto.autor, _href=URL('buscar', vars=dict(autor=texto.autor)))))}}
 {{pass}}
+{{if len(texto.licenca):}}
+{{=LI(SPAN("Licença: ", A(texto.licenca, _href=URL('buscar', vars=dict(licenca=texto.licenca)))))}}
+{{pass}}
 {{if len(texto.email):}}
 {{=LI(SPAN("E-mail: ", A(texto.email, _href=URL('buscar', vars=dict(email=texto.email)))))}}
-{{pass}}
-{{if len(tags):}}
-	<li>Tags: </li>
-	{{for tag in tags:}}
-		{{=LI(A(SPAN("#",tag.tag), _href=URL('buscar', vars=dict(tag=tag.tag))))}}
-	{{pass}}
 {{pass}}
 </ul>
 </div>
 <div class='ver_textos_tags'>
-{{=H4('Adicionar tags')}}
+{{if len(tags):}}
+<ul>
+{{=LI('Tags: ', _class='tags_titulo')}}
+{{for tag in tags:}}
+	{{=LI(A("#", tag.tag, _href=URL('buscar', vars=dict(tag=tag.tag))), SPAN('(',tag.rank,')'), A(IMG(_src=URL('static','images/mais.png'),_alt='mais')), A(IMG(_src=URL('static','images/menos.png'),_alt='menos')), _class='tags_tag')}}
+{{pass}}
+</ul>
+{{pass}}
 {{=formT}}
 </div>
 <div class='ver_textos_comentarios'>
