@@ -79,6 +79,14 @@ db.define_table(
 		required=True,
 		notnull=True,
 	),
+	Field(
+		'rank',
+		'integer',
+		default=0,
+		readable=True,
+		writable=False,
+		notnull=True,
+	),
 )
 
 db.imagem.arquivo.requires = IS_NOT_EMPTY()
@@ -150,6 +158,14 @@ db.define_table(
 	Field(
 		'tag',
 		required=True,
+		notnull=True,
+	),
+	Field(
+		'rank',
+		'integer',
+		default=0,
+		readable=True,
+		writable=False,
 		notnull=True,
 	),
 )
