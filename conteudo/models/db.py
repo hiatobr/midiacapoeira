@@ -58,10 +58,80 @@ db.define_table(
 	Field('image_id', 'reference image'),
 	Field('tag'),
 )
+db.define_table(
+	'imagem',
+	Field(
+		'arquivo',
+		'upload',
+		required=True,
+		uploadseparate=True,
+		notnull=True,
+	),
+	Field(
+		'data',
+		default=int(time.strftime('%s', time.localtime())),
+		update=int(time.strftime('%s', time.localtime())),
+		writable=False,
+		readable=True,
+		notnull=True,
+	),
+	Field(
+		'autor',
+		default='Alguém',
+	),
+	Field(
+		'fonte',
+	),
+	Field(
+		'licenca',
+	),
+	Field(
+		'email',
+	),
+)
+db.define_table(
+	'imagem_post',
+	Field(
+		'imagem_id',
+		'reference imagem',
+	),
+	Field(
+		'autor',
+		default='Alguém',
+	),
+	Field(
+		'email',
+	),
+	Field(
+		'conteudo',
+		'text',
+		required=True,
+		notnull=True,
+	),
+)
+db.define_table(
+	'imagem_tag',
+	Field(
+		'imagem_id',
+		'reference imagem'
+	),
+	Field(
+		'tag',
+		required=True,
+		notnull=True,
+	),
+)
+
 db.tag_image.image_id.requires = IS_IN_DB(db, db.image.id)
 db.post_image.image_id.requires = IS_IN_DB(db, db.image.id)
 db.tag_image.image_id.writable = db.tag_image.image_id.readable = False
 db.post_image.image_id.writable = db.post_image.image_id.readable = False
+db.imagem.arquivo.requires = IS_NOT_EMPTY()
+db.imagem_post.conteudo.requires = IS_NOT_EMPTY()
+db.imagem_tag.imagem_id.requires = IS_IN_DB(db, db.imagem.id)
+db.imagem_tag.imagem_id.readable = db.imagem_tag.imagem_id.writable = False
+db.imagem_post.imagem_id.requires = IS_IN_DB(db, db.imagem.id)
+db.imagem_post.imagem_id.readable = db.imagem_post.imagem_id.writable = False
 ## /Tabelas para Imagens
 ## Tabelas para Textos
 db.define_table(
