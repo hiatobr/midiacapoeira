@@ -26,6 +26,7 @@ db.define_table(
 	),
 	Field(
 		'data',
+		'datetime',
 		default=int(time.strftime('%s', time.localtime())),
 		update=int(time.strftime('%s', time.localtime())),
 		writable=False,
@@ -34,18 +35,22 @@ db.define_table(
 	),
 	Field(
 		'autor',
+		'string',
 		default='Alguém',
 	),
 	Field(
 		'fonte',
+		'string',
 		default='Internet',
 	),
 	Field(
 		'licenca',
+		'string',
 		default='Domínio Público',
 	),
 	Field(
 		'email',
+		'string',
 	),
 )
 db.define_table(
@@ -56,10 +61,12 @@ db.define_table(
 	),
 	Field(
 		'autor',
+		'string',
 		default='Alguém',
 	),
 	Field(
 		'email',
+		'string',
 	),
 	Field(
 		'conteudo',
@@ -76,6 +83,7 @@ db.define_table(
 	),
 	Field(
 		'tag',
+		'string',
 		required=True,
 		notnull=True,
 	),
@@ -107,6 +115,7 @@ db.define_table(
 	),
 	Field(
 		'data',
+		'datetime',
 		default=int(time.strftime('%s', time.localtime())),
 		update=int(time.strftime('%s', time.localtime())),
 		writable=False,
@@ -115,14 +124,17 @@ db.define_table(
 	),
 	Field(
 		'autor',
+		'string',
 		default='Alguém',
 	),
 	Field(
 		'fonte',
+		'string',
 		default='Internet',
 	),
 	Field(
 		'licenca',
+		'string',
 		default='Domínio Público',
 	),
 	Field(
@@ -137,10 +149,12 @@ db.define_table(
 	),
 	Field(
 		'autor',
+		'string',
 		default='Alguém',
 	),
 	Field(
 		'email',
+		'string',
 	),
 	Field(
 		'conteudo',
@@ -157,6 +171,7 @@ db.define_table(
 	),
 	Field(
 		'tag',
+		'string',
 		required=True,
 		notnull=True,
 	),
