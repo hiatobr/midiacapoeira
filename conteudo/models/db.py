@@ -152,10 +152,6 @@ db.define_table(
 		required=True,
 		notnull=True,
 	),
-	Field(
-		'rank',
-		notnull=True,
-	),
 )
 
 db.texto.conteudo.requires = IS_NOT_EMPTY()
