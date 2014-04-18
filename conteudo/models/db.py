@@ -38,9 +38,11 @@ db.define_table(
 	),
 	Field(
 		'fonte',
+		default='Internet',
 	),
 	Field(
 		'licenca',
+		default='Domínio Público',
 	),
 	Field(
 		'email',
@@ -109,9 +111,11 @@ db.define_table(
 	),
 	Field(
 		'fonte',
+		default='Internet',
 	),
 	Field(
 		'licenca',
+		default='Domínio Público',
 	),
 	Field(
 		'email',
