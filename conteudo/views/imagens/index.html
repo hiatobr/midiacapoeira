@@ -2,8 +2,8 @@
 <h1>Imagens</h1>
 <div class='index_imagens_grade'>
 <ul>
-{{for image in images:}}
-{{=LI(A(IMG(_src=URL('download', args=image.file)), _href=URL("ver", args=image.id)))}}
+{{for imagem in imagens:}}
+{{=LI(A(IMG(_src=URL('download', args=imagem.arquivo)), _href=URL("ver", args=imagem.id)))}}
 {{pass}}
 </ul>
 </div>

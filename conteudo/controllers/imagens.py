@@ -4,19 +4,19 @@
 ## Padrão é mostrar as últimas imagens em grade na página inicial
 def index():
 	response.flash = 'Últimas imagens'
-	images = db().select(db.image.ALL, orderby=~db.image.date)
-	return dict(images=images)
+	imagens = db().select(db.imagem.ALL, orderby=~db.imagem.data)
+	return dict(imagens=imagens)
 
 ## Utilizado para visualizar uma imagem específica, assim como ver e enviar comentários
 def ver():
 	response.flash = 'Visualizar imagem'
-	image = db.image(request.args(0,cast=int)) or redirect(URL('index'))
-	db.post_image.image_id.default = image.id
-	form = SQLFORM(db.post_image)
+	imagem = db.imagem(request.args(0,cast=int)) or redirect(URL('index'))
+	db.imagem_post.imagem_id.default = imagem.id
+	form = SQLFORM(db.imagem_post)
 	if form.process().accepted:
 		response.flash = 'Comentário publicado'
-	comments = db(db.post_image.image_id==image.id).select()
-	return dict(image=image, comments=comments, form=form)
+	comentarios = db(db.imagem_post.imagem_id==imagem.id).select()
+	return dict(imagem=imagem, comentarios=comentarios, form=form)
 
 ## TODO: Fazer função para enviar imagens
 
