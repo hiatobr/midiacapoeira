@@ -139,6 +139,7 @@ db.define_table(
 	),
 	Field(
 		'email',
+		'string',
 	),
 )
 db.define_table(
