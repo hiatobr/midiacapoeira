@@ -1,0 +1,58 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{if 'message' in globals():}}
+{{=H3(message)}}
+{{=H2("Em construção")}}
+{{=P("Eu não sou pago por hora, tenha paciência!")}}
+{{=P("Enquanto isto, explore o que já está funcionando e dê feedback, é importante e mais útil que dinheiro.")}}
+{{=P("Se não quiser dar feedback, me da café. Me chama pra tomar café que eu vou mesmo.")}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+{{block right_sidebar}}
+{{=H4("Links do projeto")}}
+{{=UL(
+	LI(
+		A(
+			'Pad',
+			_href='http://padeiro.hi.ato.br/p/MidiaCapoeira',
+			_target='_blank',
+		),
+		SPAN(":"),
+		BR(),
+		SPAN("Documento colaborativo com documentação - aberto a edições e contribuições!"),
+	),
+	LI(
+		A(
+			'Chat',
+			_href=URL(
+				a='init',
+				c='chat',
+				f='index',
+			),
+		),
+		SPAN(":"),
+		BR(),
+		SPAN("Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde"),
+	),
+	LI(
+		A(
+			'Código',
+			_href='https://github.com/hiatobr/midiacapoeira.in',
+			_target='_blank',
+		),
+		SPAN(":"),
+		BR(),
+		SPAN("Código fonte de midiacapoeira.in no Github."),
+	),
+	LI(
+		A(
+			'E-mail',
+			_href='mailto:capoeira@riseup.net',
+		),
+		SPAN(":"),
+		BR(),
+		SPAN("Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net"),
+	),
+)}}
+{{end}}
