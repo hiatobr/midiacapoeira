@@ -11,8 +11,9 @@ Receita de bolo:
 
 ```
 git clone https://github.com/web2py/web2py.git
-git clone https://github.com/hiatobr/midiacapoeira.in.git web2py/applications
-python web2py.py
+git clone https://github.com/hiatobr/midiacapoeira.in.git
+rsync -a midiacapoeira.in/ web2py/applications/
+python web2py/web2py.py
 ```
 
 Seguindo esta receita e acessando <http://localhost:8000> deveria aparecer a mesma coisa que tem em <https://midiacapoeira.in>.
@@ -21,6 +22,8 @@ Se não der certo, leia a documentação do [Web2Py](http://web2py.com), entre e
 
 [Web2Py](http://web2py.com) tem licença específica e o repositório encontra-se em
 <https://github.com/web2py/web2py>.
+
+Licença para o código fonte de <https://midiacapoeira.in>:
 
 > Copywrong (W) 2014 Mídia Capoeira
 
