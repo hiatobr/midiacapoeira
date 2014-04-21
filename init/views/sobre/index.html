@@ -8,40 +8,163 @@
 {{=H4("Maravilha, boto fé, quero conribuir agora mesmo!")}}
 {{=P(
 	SPAN("Para começar a contribuir, envie material para a página de "),
-	A('Conteúdo', _href=URL('a=conteudo')),
-	SPAN(". Esta página é aberta a contribuições para envio de textos, imagens, áudios e vídeos, de acordo com os "),
-	A('Termos de envio', _href=URL('c=termos')),
-	SPAN(". Se puder, leia os termos antes de enviar qualquer coisa. Se não quiser ler os termos ou se isto te irrita, envia conteúdo primeiro e faz o que quiser mesmo! São os termos que têm que se adaptar às necessidades de quem contribui, e não o contrário!"),
+	A(
+		'Conteúdo',
+		_href=URL(a='conteudo'),
+	),
+	SPAN(". Esta página é aberta a contribuições para envio de "),
+	A(
+		'textos',
+		_href=URL(
+			a='conteudo',
+			c='textos',
+			f='index',
+		),
+	),
+	SPAN(", "),
+	A(
+		'imagens',
+		_href=URL(
+			a='conteudo',
+			c='imagens',
+			f='index',
+		),
+	),
+	SPAN(", "),
+	A(
+		'áudios',
+		_href=URL(
+			a='conteudo',
+			c='audios',
+			f='index',
+		),
+	),
+	SPAN(", "),
+	A(
+		'vídeos',
+		_href=URL(
+			a='conteudo',
+			c='videos',
+			f='index',
+		),
+	),
+	SPAN(", de acordo com os "),
+	A(
+		'Termos de envio',
+		_href=URL('termos'),
+	),
+	SPAN("."),
 )}}
+{{=P("Se puder, leia os termos antes de enviar qualquer coisa. Se não quiser ler os termos ou se isto te irrita, envia conteúdo primeiro e faz o que quiser mesmo! São os termos que têm que se adaptar às necessidades de quem contribui, e não o contrário!")}}
 {{=H4("Não entendi nada, volte tudo como estava antes!")}}
 {{=P(
 	SPAN("Se quiser continuar seguindo a lógica e os paradigmas convencionais de jornalismo, imprensa e midia, não tem problema. Está criada uma seção de "),
-	A('Editoriais', _href=URL('a=editoriais')),
-	SPAN(", que serve para redatores e jornalistas amadores e profissionais disponibilizarem suas versões dos fatos de forma independente. Isto possibilita estabelecer um contraponto à mídia ortodoxa, que tem um histórico questionável de comprometimento com governos autoritários, empresários capitalistas e demais máfias e cartéis que buscam o poder através ou não do dinheiro."),
+	A(
+		'Editoriais',
+		_href=URL(a='editoriais'),
+	),
+	SPAN(", que serve para redatores e jornalistas amadores e profissionais disponibilizarem suas versões dos fatos de forma independente."),
+)}}
+{{=P(
+	SPAN("Isto possibilita estabelecer um contraponto à mídia ortodoxa, que tem um histórico questionável de comprometimento com governos autoritários, empresários capitalistas e demais máfias e cartéis que buscam o poder através ou não do dinheiro. Para mais fundamentalismo ideológico, visite a página de "),
+	A(
+		'Política',
+		_href=URL('politica'),
+	),
+	SPAN(" do site."),
 )}}
 {{=P(
 	SPAN("A diferença entre a página de "),
-	A('Conteúdo', _href=URL('a=conteudo')),
+	A(
+		'Conteúdo',
+		_href=URL(a='conteudo'),
+	),
 	SPAN(" e a página de "),
-	A('Editoriais', _href=URL('a=editoriais')),
-	SPAN(", é que a primeira privilegia o envio de material de forma mais crua e bruta possível. O espaço da segunda existe porque as pessoas ainda estão acostumada com a forma de editorial e noticiário convencional, onde alguém cria uma narrativa associada com imagens. Esta não é uma forma válida de mídia livre. Contudo, é uma forma válida de mídia alternativa e independente."),
+	A(
+		'Editoriais',
+		_href=URL(a='editoriais'),
+	),
+	SPAN(", é que a primeira privilegia o envio de material de forma mais crua e bruta possível. O espaço da segunda existe porque as pessoas ainda estão acostumada com a forma de editorial e noticiário convencional, onde alguém cria uma narrativa associada com imagens, estabelecendo um ponto de vista, uma opinião, e uma abordagem que, em decorrência de sua natureza, não tem como ser imparcial."),
 )}}
+{{(=P("Note que esta não é uma forma válida de mídia livre. Contudo, é uma forma válida de mídia alternativa e independente. Daí a necessidade de garantir o espaço, mas estabelecer uma separação.")}}
 {{=P(
 	SPAN("Se tu for jornalista, redatorx, editorx ou entusiasta das notícias, ou ainda, acha que tem alguém interessadx na tua opinião, entre em "),
-	A('Contato', _href=URL('c=contato')),
+	A(
+		'Contato',
+		_href=URL('contato'),
+	),
 	SPAN(" para conseguir uma conta e poder contribuir com nossos editoriais. Se puder, leia a "),
-	A('Política para editoriais', _href=URL('c=termos', 'f=editoriais')),
-	SPAN(" para entender melhor a proposta. Isto não serve para te obrigar a aceitar a proposta estabelecida, inclusive, se tu não concordar com alguma coisa, pelo menos tu vai poder argumentar e influenciar a reformulação desta política!"),
+	A(
+		'Política para editoriais',
+		_href=URL('editoriais'),
+	),
+	SPAN(" para entender melhor a proposta. Isto não serve para te obrigar a aceitar a proposta estabelecida, inclusive, se tu não concordar com alguma coisa, pelo menos tu vai poder argumentar e influenciar a reformulação desta política. Estes 'termos' e 'políticas' devem se adaptar a quem usa o serviço, e não o contrário."),
 )}}
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 {{block right_sidebar}}
-{{=H4('Links do projeto')}}
-<ul>
-	{{=LI(A('Pad', _href=URL('http://padeiro.hi.ato.br/p/MidiaCapoeira'), _target='_blank'), ':', BR(), 'Documento colaborativo com documentação - aberto a edições e contribuições!')}}
-	{{=LI(A('Chat', _href=URL('chat', 'index')), ':', BR(), 'Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde!')}}
-	{{=LI(A('Código', _href=URL('https://github.com/hiatobr/midiacapoeira.in')), ':', BR(), 'Código fonte de midiacapoeira.in no Github.')}}
-	{{=LI(A('E-mail', _href=URL('mailto:capoeira@riseup.net')), ':', BR(), 'Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net')}}
-</ul>
+{{=H4('Todas as páginas')}}
+{{=UL(
+	LI(
+		A(
+			'Sobre',
+			_href=URL('index'),
+		),
+	),
+	LI(
+		A(
+			'Contato',
+			_href=URL('contato'),
+		),
+	),
+	LI(
+		A(
+			'Conteúdo',
+			_href=URL('conteudo'),
+		),
+	),
+	LI(
+		A(
+			'Editoriais',
+			_href=URL('editoriais'),
+		),
+	),
+	LI(
+		A(
+			'Licença',
+			_href=URL('licenca'),
+		),
+	),
+	LI(
+		A(
+			'Links',
+			_href=URL('links'),
+		),
+	),
+	LI(
+		A(
+			'Manifesto',
+			_href=URL('manifesto'),
+		),
+	),
+	LI(
+		A(
+			'Política',
+			_href=URL('politica'),
+		),
+	),
+	LI(
+		A(
+			'Referências',
+			_href=URL('referencias'),
+		),
+	),
+	LI(
+		A(
+			'Termos',
+			_href=URL('termos'),
+		),
+	),
+)}}
 {{end}}
