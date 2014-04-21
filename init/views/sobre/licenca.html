@@ -347,3 +347,68 @@
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
+{{block right_sidebar}}
+{{=H4('Todas as páginas')}}
+{{=UL(
+	LI(
+		A(
+			'Sobre',
+			_href=URL('index'),
+		),
+	),
+	LI(
+		A(
+			'Contato',
+			_href=URL('contato'),
+		),
+	),
+	LI(
+		A(
+			'Conteúdo',
+			_href=URL('conteudo'),
+		),
+	),
+	LI(
+		A(
+			'Editoriais',
+			_href=URL('editoriais'),
+		),
+	),
+	LI(
+		A(
+			'Licença',
+			_href=URL('licenca'),
+		),
+	),
+	LI(
+		A(
+			'Links',
+			_href=URL('links'),
+		),
+	),
+	LI(
+		A(
+			'Manifesto',
+			_href=URL('manifesto'),
+		),
+	),
+	LI(
+		A(
+			'Política',
+			_href=URL('politica'),
+		),
+	),
+	LI(
+		A(
+			'Referências',
+			_href=URL('referencias'),
+		),
+	),
+	LI(
+		A(
+			'Termos',
+			_href=URL('termos'),
+		),
+	),
+)}}
+{{end}}
