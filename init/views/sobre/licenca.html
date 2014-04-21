@@ -1,0 +1,349 @@
+{{extend 'layout.html'}}
+{{if 'message' in globals():}}
+{{=H3(message)}}
+{{=H4("Licença do conteúdo")}}
+{{=P(
+	SPAN("A licença de todo o conteúdo deste site é "),
+	A(
+		'Unlicense',
+		_href='http://unlicense.org/UNLICENSE',
+		_target='_blank',
+	),
+	SPAN(". Esta licença "),
+	B("NÃO"),
+	SPAN(" se aplica ao conteúdo enviado por terceiros nas páginas de "),
+	A(
+		'Conteúdo',
+		_href=URL(
+			a='conteudo',
+			c='default',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(" e de "),
+	A(
+		'Editoriais',
+		_href=URL(
+			a='editoriais',
+			c='default',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(". Conteúdo nestas páginas têm licença própria, e quando não há licença especificada, é assumida a licença "),
+	A(
+		'Marca de Domínio Público 1.0',
+		_href='http://creativecommons.org/publicdomain/mark/1.0/deed.pt_BR',
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=P(
+	SPAN("Para mais informações sobre a licença dos "),
+	A(
+		'textos',
+		_href=URL(
+			a='conteudo',
+			c='textos',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'imagens',
+		_href=URL(
+			a='conteudo',
+			c='imagens',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'áudios',
+		_href=URL(
+			a='conteudo',
+			c='áudios',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(", e "),
+	A(
+		'vídeos',
+		_href=URL(
+			a='conteudo',
+			c='vídeos',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(" enviados para o aplicativo de "),
+	A(
+		'Conteúdo',
+		_href=URL(
+			a='conteudo',
+			c='default',
+			f='index',
+		),
+		_target='_blank',
+	),
+	SPAN(", veja a página de "),
+	A(
+		'Termos',
+		_href=URL(
+				'termos',
+		),
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=H4("Ferramentas utilizadas")}}
+{{=P(
+	SPAN("Este site é desenvolvido na totalidade com o framework "),
+	A(
+		'Web2Py',
+		_href='http://web2py.com',
+		_target='_blank',
+	),
+	SPAN(". As licenças pertinentes a componentes utilizados por este framework devem estar no site do mantenedor."),
+)}}
+{{=P(
+	SPAN("Está implícito que são utilizadas as seguintes linguagens de programação, estilos, marcação e modelagem: "),
+	A(
+		'Python',
+		_href='https://www.python.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'HTML',
+		_href='https://www.w3.org/html',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'CSS',
+		_href='https://www.w3.org/css',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'RSS',
+		_href='http://www.rssboard.org/rss-specification',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'SQL',
+		_href='https://pt.wikipedia.org/wiki/SQL',
+		_target='_blank',
+	),
+	SPAN(", e "),
+	A(
+		'Javascript',
+		_href='https://developer.mozilla.org/pt-BR/docs/JavaScript',
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=P(
+	SPAN("Além dos seguintes softwares de sistemas operacionais, servidores web, sistemas gerenciadores de banco de dados, interpretadores: "),
+	A(
+		'Debian',
+		_href='https://www.debian.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Kali',
+		_href='http://www.kali.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Tails',
+		_href='https://tails.boum.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'LXC',
+		_href='https://linuxcontainers.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Apache HTTP Server',
+		_href='https://httpd.apache.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'MySQL',
+		_href='https://www.mysql.com',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Python',
+		_href='https://www.python.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Bash',
+		_href='https://www.gnu.org/software/bash',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Trac',
+		_href='http://trac.edgewall.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Etherpad',
+		_href='http://etherpad.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Tor',
+		_href='https://www.torproject.org',
+		_target='_blank',
+	),
+	SPAN(", e "),
+	A(
+		'Git',
+		_href='http://git-scm.com',
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=P(
+	SPAN("O site é escrito e desenvolvido usando as seguintes ferramentas: "),
+	A(
+		'Vim',
+		_href='http://www.vim.org/',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Gedit',
+		_href='https://wiki.gnome.org/Apps/Gedit',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Terminator',
+		_href='https://code.google.com/p/jessies/wiki/Terminator',
+		_target='_blank',
+	),
+	SPAN(", e "),
+	A(
+		'Iceweasel',
+		_href='https://www.mozilla.org/pt-BR/firefox/new',
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=P(
+	SPAN("Serviços e ferramentas externas utilizados: "),
+	A(
+		'Gitorious',
+		_href='https://gitorious.org',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Github',
+		_href='https://github.com',
+		_target='_blank',
+	),
+	SPAN(", "),
+	A(
+		'Bitbucket',
+		_href='https://bitbucket.org',
+		_target='_blank',
+	),
+	SPAN(", e "),
+	A(
+		'Duckduckgo',
+		_href='https://duckduckgo.com',
+		_target='_blank',
+	),
+	SPAN("."),
+)}}
+{{=P(
+	SPAN("Todos os softwares listados são "),
+	A(
+		'software livre',
+		_href='https://www.fsf.org',
+		_target='_blank',
+	),
+	SPAN(" com algumas exceções como é o caso do Github, e suas respectivas licenças deveriam estar nas respectivas páginas dos respectivos mantenedores."),
+)}}
+{{=P(
+	SPAN("Além destes, também é utilizado o software "),
+	A(
+		'VLC',
+		_href='http://videolan.org',
+		_target='_blank',
+	),
+	SPAN(" para ouvir música da "),
+	A(
+		'Rádio Balaio',
+		_href='http://radiobalaio.org',
+		_target='_blank',
+	),
+	SPAN(" durante o desenvolvimento do site, e os únicos softwares proprietários utilizados são os dos microchips da cafeteira e do microondas, que é pra manter o desenvolvedor acordado.")
+)}}
+{{=H4("Código fonte")}}
+{{=P(
+	SPAN("Todo o código do site é software livre e está disponível nos seguintes repositórios: "),
+	UL(
+		LI(
+			'GitHub: ',
+			A(
+				'https://github.com/hiatobr/midiacapoeira.in',
+				_href='https://github.com/hiatobr/midiacapoeira.in',
+				_target='_blank',
+			),
+		),
+	),
+)}}
+{{=P(
+	SPAN("O código do site não é domínio público, está disponível através da licença "),
+	A(
+		'GPL3',
+		_href='https://www.gnu.org/licenses/gpl-3.0-standalone.html',
+		_target='_blank',
+	),
+	SPAN(", que é uma licença livre mas que tem as restrições que toda licença livre formal tem, e exige que a fonte seja citada e que tudo o que for copiado ou reutlizado seja distribuído sob a mesma licença. A atribuição deve ser feita a "),
+	B('Mídia Capoeira'),
+	SPAN(". Simples assim."),
+)}}
+{{=P(
+	B("NÃO"),
+	SPAN(" tente descobrir o nome do autor ou dxs autorxs deste site, e se descobrir, "),
+	B("NÃO"),
+	SPAN(" utilize para atribuir mérito, reconhecimento ou identificação."),
+)}}
+{{=P(
+	SPAN("Para ler mais sobre não atribuição e deslicença, e entender porque é que não é para usar o nome dxs autorxs do site, veja a página de "),
+	A(
+		'Política',
+		_href=URL(
+			'politica'
+		),
+		_target='_blank',
+	),
+	SPAN(" do site."),
+)}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
