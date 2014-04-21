@@ -5,6 +5,14 @@ def index():
 	response.flash = T("Sobre midiacapoeira.in")
 	return dict(message=T("Sobre o projeto midiacapoeira.in"))
 
+def contato():
+	response.flash = T("Contato")
+	return dict(message=T("Para entrar em contato com xs autorxs e desenvolvedorxs de midiacapoeira.in"))
+
+def conteudo():
+	response.flash = T("Informações sobre conteúdo")
+	return dict(message=T("Sobre o conteúdo de midiacapoeira.in"))
+
 def editoriais():
 	response.flash = T("Informações sobre editoriais")
 	return dict(message=T("Sobre os editoriais de midiacapoeira.in"))
