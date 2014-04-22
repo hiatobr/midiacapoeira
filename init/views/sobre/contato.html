@@ -2,57 +2,118 @@
 {{extend 'layout.html'}}
 {{if 'message' in globals():}}
 {{=H3(message)}}
-{{=H2("Em construção")}}
-{{=P("Eu não sou pago por hora, tenha paciência!")}}
-{{=P("Enquanto isto, explore o que já está funcionando e dê feedback, é importante e mais útil que dinheiro.")}}
-{{=P("Se não quiser dar feedback, me da café. Me chama pra tomar café que eu vou mesmo.")}}
+{{=H4("E-mail:")}}
+{{=P("Esta conta de e-mail é atualmente monitorada pelo criador, autor, desenvolvedor principal e desocupado de plantão deste site: ")}}
+<center>
+{{=A(
+	B('capoeira@riseup.net'),
+	_href='mailto:capoeira@riseup.net',
+	_class='url_grande',
+)}}
+</center>
+{{=H4("IRC:")}}
+{{=P(
+	SPAN("Uma miríade de pessoas envolvidas com o desenvolvimento deste site, assim como entusiastas e apoiadores participam no canal "),
+	B("#midiacapoeira"),
+	SPAN(" na rede "),
+	A(
+		'freenode',
+		_href='https://freenode.net',
+		_target='_blank',
+	),
+	SPAN(" de "),
+	A(
+		'irc',
+		_href='https://pt.wikipedia.org/wiki/Internet_Relay_Chat',
+		_target='_blank',
+	),
+	SPAN(". Atualmente chegamos à marca de 1 (uma) pessoa ativa neste chat."),
+)}}
+{{=H4("Twitter:")}}
+{{=P("Esta conta no twitter é a que os militantes de rua da Mídia Capoeira usavam/usam para transmitir protestos e outras coisas ao vivo pelo twitcasting: ")}}
+<center>
+{{=A(
+	'twitter.com/MidiaCapoeira',
+	_href='https://twitter.com/MidiaCapoeira',
+	_target='_blank',
+	_class='url_grande',
+)}}
+</center>
+{{=H4("Facebook:")}}
+{{=P("Esta é a página oficial da Mídia Capoeira no Facebook. Não serve pra nada e é o último lugar aonde alguém vai responder: ")}}
+<center>
+{{=A(
+	'facebook.com/MídiaCapoeira',
+	_href='https://facebook.com/MídiaCapoeira',
+	_target='_blank',
+	_class='url_grande',
+)}}
+</center>
 {{else:}}
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 {{block right_sidebar}}
-{{=H4("Links do projeto")}}
+{{=H4('Todas as páginas')}}
 {{=UL(
 	LI(
 		A(
-			'Pad',
-			_href='http://padeiro.hi.ato.br/p/MidiaCapoeira',
-			_target='_blank',
+			'Sobre',
+			_href=URL('index'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Documento colaborativo com documentação - aberto a edições e contribuições!"),
 	),
 	LI(
 		A(
-			'Chat',
-			_href=URL(
-				a='init',
-				c='chat',
-				f='index',
-			),
+			'Contato',
+			_href=URL('contato'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde"),
 	),
 	LI(
 		A(
-			'Código',
-			_href='https://github.com/hiatobr/midiacapoeira.in',
-			_target='_blank',
+			'Conteúdo',
+			_href=URL('conteudo'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Código fonte de midiacapoeira.in no Github."),
 	),
 	LI(
 		A(
-			'E-mail',
-			_href='mailto:capoeira@riseup.net',
+			'Editoriais',
+			_href=URL('editoriais'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net"),
+	),
+	LI(
+		A(
+			'Licença',
+			_href=URL('licenca'),
+		),
+	),
+	LI(
+		A(
+			'Links',
+			_href=URL('links'),
+		),
+	),
+	LI(
+		A(
+			'Manifesto',
+			_href=URL('manifesto'),
+		),
+	),
+	LI(
+		A(
+			'Política',
+			_href=URL('politica'),
+		),
+	),
+	LI(
+		A(
+			'Referências',
+			_href=URL('referencias'),
+		),
+	),
+	LI(
+		A(
+			'Termos',
+			_href=URL('termos'),
+		),
 	),
 )}}
 {{end}}
