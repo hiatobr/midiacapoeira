@@ -19,8 +19,9 @@ response.meta.generator = 'Web2py Web Framework'
 
 response.menu = [
 	(T('Início'), False, URL('default', 'index'), []),
+	(T('Sobre'), False, URL('sobre', 'index'), []),
 	(T('Chat'), False, URL('chat', 'index'), []),
-	(T('NOVO: Conteúdo'), False, URL(a='conteudo', c='default', f='index'), []),
+	(T('Conteúdo'), False, URL(a='conteudo', c='default', f='index'), []),
 ]
 
 DEVELOPMENT_MENU = False
