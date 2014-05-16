@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 
-domainname = 'http://localhost:8000'
+domainname = 'https://midiacapoeira.in'
 
