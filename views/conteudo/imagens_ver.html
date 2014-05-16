@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+<div class='ver_imagens_voltar'>
+{{=A('Voltar', _href=URL(a='conteudo', c='imagens', f='index'))}}
+</div>
+<center>
+<div class='ver_imagens_imagem'>
+<img src="{{=URL('download', args=image.file)}}" />
+</div>
+</center>
+{{if len(comments):}}
+	<h2>Commentário</h2><br /><p>
+	{{for post in comments:}}
+		<p>{{=post.author}} says <i>{{=post.body}}</i></p>
+	{{pass}}</p>
+{{else:}}
+	<h2>Nenhum comentário ainda</h2>
+{{pass}}
+<h2>Comentar</h2>
+{{=form}}

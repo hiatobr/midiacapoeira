@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>Imagens</h1>
+<div class='index_imagens_grade'>
+<ul>
+{{for image in images:}}
+{{=LI(A(IMG(_src=URL('download', args=image.file)), _href=URL("ver", args=image.id)))}}
+{{pass}}
+</ul>
+</div>
+

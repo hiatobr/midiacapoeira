@@ -1,0 +1,53 @@
+{{extend 'layout.html'}}
+<div class='ver_textos_voltar'>
+{{=P(A('Voltar', _href=URL('textos')))}}
+</div>
+<center>
+<div class='ver_textos_texto'>
+{{=TEXTAREA(texto.conteudo, _readonly='readonly', _rows='20')}}
+</div>
+</center>
+<br />
+<div class='ver_textos_menu'>
+<ul>
+{{if len(texto.fonte):}}
+{{=LI(SPAN("Fonte: ", A(texto.fonte, _href=URL('textos_buscar', vars=dict(fonte=texto.fonte)))))}}
+{{pass}}
+{{if len(texto.autor):}}
+{{=LI(SPAN("Autor: ", A(texto.autor, _href=URL('textos_buscar', vars=dict(autor=texto.autor)))))}}
+{{pass}}
+{{if len(texto.email):}}
+{{=LI(SPAN("E-mail: ", A(texto.email, _href=URL('textos_buscar', vars=dict(email=texto.email)))))}}
+{{pass}}
+{{if len(tags):}}
+	<li>Tags: </li>
+	{{for tag in tags:}}
+		{{=LI(A(SPAN("#",tag.tag), _href=URL('textos_buscar', vars=dict(tag=tag.tag))))}}
+	{{pass}}
+{{pass}}
+</ul>
+</div>
+<div class='ver_textos_tags'>
+{{=H4('Adicionar tags')}}
+{{=formT}}
+</div>
+<div class='ver_textos_comentarios'>
+{{if len(comentarios):}}
+	{{=H4('Comentários')}}
+	<p>
+	{{for comentario in comentarios:}}
+		<p>{{if len(comentario.email):}}
+		{{=A(comentario.autor, _href="mailto:"+comentario.email)}}
+		{{else:}}
+		{{=comentario.autor}}
+		{{pass}} diz: <i>{{=comentario.conteudo}}</i></p>
+	{{pass}}
+	</p>
+{{else:}}
+	{{=H4("Nenhum comentário ainda. Incentive a dissidência e o contraditório dando a tua opinião:")}}
+{{pass}}
+{{=H3('Comentar')}}
+{{=formC}}
+</div>
+<script type="text/javascript" src="{{=URL('static','js/local.js'))}}"></script>
+
