@@ -8,9 +8,9 @@ __init__.py
 *.swp
 *.w2p
 *.class
-databases/*
-sessions/*
-errors/*
-cache/*
-uploads/*
-routes.example.py
+applications/midiacapoeira/databases/*
+applications/midiacapoeira/sessions/*
+applications/midiacapoeira/errors/*
+applications/midiacapoeira/cache/*
+applications/midiacapoeira/uploads/*
+applications/midiacapoeira/routes.example.py
