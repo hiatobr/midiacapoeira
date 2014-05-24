@@ -14,5 +14,5 @@ applications/midiacapoeira/errors/*
 applications/midiacapoeira/cache/*
 applications/midiacapoeira/uploads/*
 applications/midiacapoeira/routes.example.py
-#applications/midiacapoeira/models/00_domainname.py
-#applications/midiacapoeira/models/01_db.py
+applications/midiacapoeira/models/00_domainname.py
+applications/midiacapoeira/models/01_db.py
