@@ -3,8 +3,6 @@
 
 import time
 
-db = DAL("sqlite://storage.sqlite")
-
 session.connect(request, response, separate=True)
 
 ## Autenticação
