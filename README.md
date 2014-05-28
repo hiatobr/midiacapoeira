@@ -1,7 +1,7 @@
-Código fonte de https://midiacapoeira.in
+Código fonte de midiacapoeira.in
 ===
 
-Este repositório contém o código dos aplicativos Web2Py gerados em
+Este repositório contém o código do aplicativo Web2Py gerado em
 <https://midiacapoeira.in>.
 
 Este repositório não contém todo o código de Web2Py. O conteúdo deste
@@ -10,18 +10,22 @@ repositório deve ser copiado para o diretório **applications** do Web2Py.
 Receita de bolo:
 
 ```
-git clone https://github.com/web2py/web2py.git
-git clone https://github.com/hiatobr/midiacapoeira.in.git
-rsync -a midiacapoeira.in/ web2py/applications/
-python web2py/web2py.py
+git clone https://github.com/web2py/web2py.git midiacapoeira.in
+cd midiacapoeira.in
+git remote add midiacapoeira.in https://github.com/hiatobr/midiacapoeira.in.git
+git pull midiacapoeira.in master
+python web2py.py
 ```
 
-Seguindo esta receita e acessando <http://localhost:8000> deveria aparecer a mesma coisa que tem em <https://midiacapoeira.in>.
+Seguindo esta receita e acessando <http://localhost:8000> deveria
+aparecer a mesma coisa que tem em <https://midiacapoeira.in>.
 
-Se não der certo, leia a documentação do [Web2Py](http://web2py.com), entre em contato com capoeira@riseup.net, ou use o sistema do [GitHub](https://github.com) para enviar problemas/sugestões/etc.
+Se não der certo, leia a documentação do [Web2Py](http://web2py.com),
+entre em contato com capoeira@riseup.net, ou use o sistema do [GitHub](https://github.com)
+para enviar problemas/sugestões/etc.
 
-[Web2Py](http://web2py.com) tem licença específica e o repositório encontra-se em
-<https://github.com/web2py/web2py>.
+[Web2Py](http://web2py.com) tem licença específica e o repositório
+encontra-se em <https://github.com/web2py/web2py>.
 
 Licença para o código fonte de <https://midiacapoeira.in>:
 
