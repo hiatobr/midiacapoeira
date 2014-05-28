@@ -1,6 +1,11 @@
-__init__.py
+*
 .*
 !.gitignore
+!routes.py
+!README.md
+!LICENSE
+!UNLICENSE
+!applications/midiacapoeira/*
 *.pyc
 *.pyo
 *~
@@ -13,6 +18,5 @@ applications/midiacapoeira/sessions/*
 applications/midiacapoeira/errors/*
 applications/midiacapoeira/cache/*
 applications/midiacapoeira/uploads/*
-applications/midiacapoeira/routes.example.py
 applications/midiacapoeira/models/00_domainname.py
 applications/midiacapoeira/models/01_db.py
