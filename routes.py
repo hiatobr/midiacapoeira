@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
 
 routers = dict(
-	BASE = dict(
-		default_application = 'midiacapoeira',
-		applications = 'midiacapoeira, admin',
-		default_language = 'pt-br',
-		languages = 'pt-br',
-	),
+	BASE=dict(
+		default_application='midiacapoeira',
 )
 
 routes_in = (
-	('/$c/$f', '/midiacapoeira/$c/$f'),
+	('/admin/$anything', '/admin/$anything'),
+	('/static/$anything', '/midiacapoeira/static/$anything'),
+	('/appadmin/$anything', '/midiacapoeira/appadmin/$anything'),
+	('/favicon.ico', '/midiacapoeira/static/favicon.ico'),
+	('/robots.txt', '/midiacapoeira/static/robots.txt'),
 )
 
-routes_out = [(x, y) for (y, x) in routes_in]
-
-routes_app = (
-	('$anything', 'midiacapoeira'),
-)
+routes_out = [(x, y) for (y, x) in routes_in[:-2]]
 
 def __routes_doctest():
 	'''
