@@ -7,6 +7,7 @@ routers = dict(
 )
 
 routes_in = (
+	('/midiacapoeira/default/$anything', '/midiacapoeira/midiacapoeira/$anything'),
 	('/admin/$anything', '/admin/$anything'),
 	('/static/$anything', '/midiacapoeira/static/$anything'),
 	('/appadmin/$anything', '/midiacapoeira/appadmin/$anything'),
