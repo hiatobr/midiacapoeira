@@ -5,6 +5,8 @@
 !README.md
 !LICENSE
 !UNLICENSE
+!applications
+!applications/midiacapoeira
 !applications/midiacapoeira/*
 *.pyc
 *.pyo
