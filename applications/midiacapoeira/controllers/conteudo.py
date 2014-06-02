@@ -109,9 +109,9 @@ def textos_enviar():
 def textos_download():
 	return response.textos_download(request, db)
 
-## [interna] Serve para autenticar usuários, por enquanto só serve para permitir que pessoas administrem o conteúdo
-def user():
-	return dict(form=auth())
+### [interna] Serve para autenticar usuários, por enquanto só serve para permitir que pessoas administrem o conteúdo
+#def user():
+#	return dict(form=auth())
 
 ## Utilizado para buscar textos po tag, autor e email. Busca DENTRO de textos ainda não está feita.
 def textos_buscar():
@@ -224,9 +224,9 @@ def videos():
 	response.flash = 'Mentira!'
 	return dict(message='Área de vídeos ainda não implementada')
 
-## Utilizado para apagar e alterar textos arbitrariamente
-@auth.requires_membership('admin')
-def admin():
-	grid = SQLFORM.smartgrid(db.text,linked_tables=['post_text'])
-	return dict(grid=grid)
+### Utilizado para apagar e alterar textos arbitrariamente
+#@auth.requires_membership('admin')
+#def admin():
+#	grid = SQLFORM.smartgrid(db.text,linked_tables=['post_text'])
+#	return dict(grid=grid)
 

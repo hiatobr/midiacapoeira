@@ -18,7 +18,6 @@ response.meta.generator = 'Web2py Web Framework'
 #response.google_analytics_id = None
 
 response.menu = [
-	(T('Chat'), False, domainname+'/chat', []),
 	(T('Sobre'), False, domainname+'/sobre', []),
 	(T('Conteúdo'), False, (domainname+'/conteudo'), []),
 	(IMG(_src=URL('static','images/texto.png'), _alt='Narrativas textuais'), False, domainname+'/conteudo/textos', []),
