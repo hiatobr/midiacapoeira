@@ -3,6 +3,7 @@
 routers = dict(
 	BASE=dict(
 		default_application='midiacapoeira',
+	),
 )
 
 routes_in = (
