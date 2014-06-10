@@ -5,17 +5,17 @@
 
 routers = dict(
 	BASE=dict(
-		default_application='midiacapoeira.in',
+		default_application='midiacapoeira',
 		default_controller='midiacapoeira',
 	),
 )
 
 routes_in = (
 	('/admin/$anything', '/admin/$anything'),
-	('/static/$anything', '/midiacapoeira.in/static/$anything'),
-	('/appadmin/$anything', '/midiacapoeira.in/appadmin/$anything'),
-	('/favicon.ico', '/midiacapoeira.in/static/favicon.ico'),
-	('/robots.txt', '/midiacapoeira.in/static/robots.txt'),
+	('/static/$anything', '/midiacapoeira/static/$anything'),
+	('/appadmin/$anything', '/midiacapoeira/appadmin/$anything'),
+	('/favicon.ico', '/midiacapoeira/static/favicon.ico'),
+	('/robots.txt', '/midiacapoeira/static/robots.txt'),
 )
 
 routes_out = [(x, y) for (y, x) in routes_in[:-2]]
