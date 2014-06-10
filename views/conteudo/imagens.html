@@ -1,9 +1,16 @@
 {{extend 'layout.html'}}
-<h1>Imagens</h1>
+{{=H1('Imagens')}}
+{{=H6('Para visualizar uma imagem em tamanho real e ver comentários, clique na miniatura da imagem')}}
+<div class='index_imagens_menu'>
+<ul>
+	{{=LI(A('Buscar', _href=URL('imagens_buscar')))}}
+	{{=LI(A('Enviar', _href=URL('imagens_enviar')))}}
+</ul>
+</div>
 <div class='index_imagens_grade'>
 <ul>
-{{for image in images:}}
-{{=LI(A(IMG(_src=URL('download', args=image.file)), _href=URL("ver", args=image.id)))}}
+{{for imagem in imagens:}}
+{{=LI(A(IMG(_src=URL('conteudo', 'imagens_download', args=imagem.arquivo)), _href=URL("imagens_ver", args=imagem.id)))}}
 {{pass}}
 </ul>
 </div>

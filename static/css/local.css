@@ -24,6 +24,21 @@ a.url_grande {
 	border-radius:5%;
 	box-shadow:0em 0em 0.5em 0.2em rgba(0,0,0,0.5);
 }
+.index_imagens_menu {
+	padding:1em;
+}
+.index_imagens_menu li {
+	padding:0.5em;
+	display:inline;
+	text-decoration:none;
+}
+.index_imagens_menu a {
+	border-radius:10%;
+	padding:0.5em;
+	font-size:large;
+	box-shadow:0.3em 0.3em 0.5em 0em rgba(0,0,0,0.5);
+	text-decoration:none;
+}
 .index_textos_grade li, .buscar_textos_grade li {
 	padding:1em;
 	display:inline-table;

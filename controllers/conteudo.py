@@ -12,26 +12,56 @@ def audios():
 ## Padrão é mostrar as últimas imagens em grade na página inicial
 def imagens():
 	response.flash = 'Últimas imagens'
-	images = db().select(db.image.ALL, orderby=~db.image.date)
-	return dict(images=images)
+#	imagens = [
+#		dict(
+#			id = imagem['id'],
+#			arquivo = imagem['arquivo'],
+#		)
+#		for imagem in db().select(db.imagem.ALL, orderby=~db.imagem.data)
+#	]
+	imagens = db().select(db.imagem.ALL, orderby=~db.imagem.data)
+	return dict(imagens=imagens)
 
 ## Utilizado para visualizar uma imagem específica, assim como ver e enviar comentários
 def imagens_ver():
 	response.flash = 'Visualizar imagem'
-	image = db.image(request.args(0,cast=int)) or redirect(URL('imagens'))
-	db.post_image.image_id.default = image.id
-	form = SQLFORM(db.post_image)
-	if form.process().accepted:
+	imagem = db.imagem(request.args(0,cast=int)) or redirect(URL('imagens'))
+	db.imagem_post.imagem_id.default = imagem.id
+
+	formC = SQLFORM(
+		db.imagem_post,
+		labels = {
+			'autor':"Autor",
+			'email':"E-mail",
+			'conteudo':"Conteúdo",
+		},
+		col3 = {
+			'autor':"Não é necessário se cadastrar ou se identificar.",
+			'email':"Caso fornecido, SERÁ publicado.",
+			'conteudo':SPAN("Comentários podem ser apagados de forma arbitrária conforme a ", A('política do site', _href=URL('sobre', 'termos')), "."),
+		},
+		submit_button = 'Enviar',
+		table_name = 'comentarios',
+	)
+	if formC.process().accepted:
 		response.flash = 'Comentário publicado'
-	comments = db(db.post_image.image_id==image.id).select()
-	return dict(image=image, comments=comments, form=form)
+	elif formC.errors:
+		response.flash = 'Comentário NÃO publicado'
+
+	comentarios = db(db.imagem_post.imagem_id==imagem.id).select()
+	return dict(imagem=imagem, comentarios=comentarios, formC=formC)
 
 ## TODO: Fazer função para enviar imagens
+## Utilizado para enviar imagens
+def imagens_enviar():
+	response.flash = 'Enviar imagem para ' + response.title
+	form = SQLFORM(db.imagem).process(next=URL('imagens'))
+	return dict(form=form)
 
 ## [interna] Serve para recuperar uma imagem do banco de dados
 ## TODO: Fazer uma função de download que funcione como a ver(), fazendo download de conteúdo através do id
 def imagens_download():
-	return response.imagens_download(request, db)
+	return response.download(request, db)
 
 ## Utilizado para apagar e alterar imagens arbitrariamente
 #@auth.requires_membership('admin')

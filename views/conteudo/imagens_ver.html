@@ -4,16 +4,23 @@
 </div>
 <center>
 <div class='ver_imagens_imagem'>
-<img src="{{=URL('download', args=image.file)}}" />
+<img src="{{=URL('imagens_download', args=imagem.arquivo)}}" />
 </div>
 </center>
-{{if len(comments):}}
-	<h2>Commentário</h2><br /><p>
-	{{for post in comments:}}
-		<p>{{=post.author}} says <i>{{=post.body}}</i></p>
-	{{pass}}</p>
+{{if len(comentarios):}}
+	{{=H4('Comentários')}}
+	<p>
+	{{for comentario in comentarios:}}
+		<p>{{if len(comentario.email):}}
+		{{=A(comentario.autor, _href="mailto:"+comentario.email)}}
+		{{else:}}
+		{{=comentario.autor}}
+		{{pass}} diz: <i>{{=comentario.conteudo}}</i></p>
+	{{pass}}
+	</p>
 {{else:}}
-	<h2>Nenhum comentário ainda</h2>
+	{{=H4("Nenhum comentário ainda. Incentive a dissidência e o contraditório dando a tua opinião:")}}
 {{pass}}
-<h2>Comentar</h2>
-{{=form}}
+{{=H3('Comentar')}}
+{{=formC}}
+
