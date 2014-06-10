@@ -1,0 +1,68 @@
+{{extend 'layout.html'}}
+{{if len(tag) or len(fonte) or len(autor) or len(email) or len(licenca) or len(imagem):}}
+<h1>Busca de imagens</h1>
+<p>
+{{if (tag):}}
+Tag: #{{=SPAN(tag)}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag='',fonte=fonte,autor=autor,email=email,licenca=licenca,imagem=imagem,)))}})
+{{pass}}
+{{if (fonte):}}
+Fonte: {{=SPAN(fonte)}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,imagem=imagem,)))}})
+{{pass}}
+{{if (autor):}}
+Autor: {{=SPAN(autor)}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag=tag,fonte=fonte,autor='',email=email,licenca=licenca,imagem=imagem,)))}})
+{{pass}}
+{{if (email):}}
+Email: {{=SPAN(email)}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email='',licenca=licenca,imagem=imagem,)))}})
+{{pass}}
+{{if (licenca):}}
+Licença: {{=SPAN(licenca)}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca='',imagem=imagem,)))}})
+{{pass}}
+{{if (imagem):}}
+Conteúdo da imagem: {{=SPAN('"',imagem,'"')}} ({{=A("remover", _href=URL('imagens_buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,imagem='',)))}})
+{{pass}}
+</h1>
+<div class='index_imagens_menu'>
+<ul>
+	{{=LI(A('Todas as imagens', _href=URL('imagens')))}}
+	{{=LI(A('Nova busca', _href=URL('imagens_buscar')))}}
+	{{=LI(A('Enviar nova imagem', _href=URL('imagens_enviar')))}}
+</ul>
+</div>
+<div class='buscar_imagens_grade'>
+<ul>
+{{if len(tags):}}
+	{{for imagem in tags:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}
+	{{pass}}
+{{pass}}
+{{if len(fontes):}}
+	{{for imagem in fontes:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}
+	{{pass}}
+{{pass}}
+{{if len(autores):}}
+	{{for imagem in autores:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}
+	{{pass}}
+{{pass}}
+{{if len(emails):}}
+	{{for imagem in emails:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}
+	{{pass}}
+{{pass}}
+{{if len(licencas):}}
+	{{for imagem in licencas:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}
+	{{pass}}
+{{pass}}
+	{{if len(imagens):}}
+	{{for imagem in imagens:}}
+	{{=LI(P(IMG(_src=URL('imagens_download', args=imagem['arquivo'])),BR(),A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem['id']))))}}{{pass}}
+{{pass}}
+</ul>
+</div>
+{{else:}}
+<h2>Busca</h2>
+{{=form}}
+{{pass}}
+

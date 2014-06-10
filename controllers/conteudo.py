@@ -25,8 +25,10 @@ def imagens():
 ## Utilizado para visualizar uma imagem específica, assim como ver e enviar comentários
 def imagens_ver():
 	response.flash = 'Visualizar imagem'
+
 	imagem = db.imagem(request.args(0,cast=int)) or redirect(URL('imagens'))
 	db.imagem_post.imagem_id.default = imagem.id
+	db.imagem_tag.imagem_id.default = imagem.id
 
 	formC = SQLFORM(
 		db.imagem_post,
@@ -48,8 +50,23 @@ def imagens_ver():
 	elif formC.errors:
 		response.flash = 'Comentário NÃO publicado'
 
+	formT = SQLFORM(
+		db.imagem_tag,
+		labels = {
+			'tag':"Adicionar tags",
+		},
+		submit_button = 'Enviar',
+		table_name = 'tags',
+	)
+	if formT.process().accepted:
+		response.flash = 'Tag adicionada'
+	elif formC.errors:
+		response.flash = 'Tag NÃO adicionada'
+
 	comentarios = db(db.imagem_post.imagem_id==imagem.id).select()
-	return dict(imagem=imagem, comentarios=comentarios, formC=formC)
+	tags = db(db.imagem_tag.imagem_id==imagem.id).select()
+
+	return dict(imagem=imagem, comentarios=comentarios, tags=tags, formC=formC, formT=formT)
 
 ## TODO: Fazer função para enviar imagens
 ## Utilizado para enviar imagens
@@ -62,6 +79,84 @@ def imagens_enviar():
 ## TODO: Fazer uma função de download que funcione como a ver(), fazendo download de conteúdo através do id
 def imagens_download():
 	return response.download(request, db)
+
+## Utilizado para buscar imagens por tag, fonte, autor, email, licença.
+def imagens_buscar():
+	response.flash = 'Buscar imagens'
+
+	tag = ''
+	fonte = ''
+	autor = ''
+	email = ''
+	licenca = ''
+	imagem = ''
+	tags = dict()
+	fontes = dict()
+	autores = dict()
+	emails = dict()
+	licencas = dict()
+	imagens = dict()
+
+	if (request.vars.tag) and len(request.vars.tag):
+		tag = request.vars.tag
+		tags_it = db(db.imagem_tag.tag == tag).select(db.imagem_tag.imagem_id)
+		if (tags_it):
+			tags = [
+				dict (
+					id = db(db.imagem.id == tag_it.imagem_id).select(db.imagem.ALL, orderby=~db.imagem.data)[0]['imagem.id'],
+					arquivo = db(db.imagem.id == tag_it.imagem_id).select(db.imagem.ALL, orderby=~db.imagem.data)[0]['imagem.arquivo'],
+				)
+				for tag_it in tags_it
+			]
+	if (request.vars.fonte) and len(request.vars.fonte):
+		fonte = request.vars.fonte
+		fontes = [
+			dict (
+				id = fonte_it['imagem.id'],
+				arquivo = fonte_it['imagem.arquivo'],
+			)
+			for fonte_it in db(db.imagem.fonte == fonte).select(db.imagem.ALL, orderby=~db.imagem.data)
+		]
+	if (request.vars.autor) and len(request.vars.autor):
+		autor = request.vars.autor
+		autores = [
+			dict (
+				id = autor_it['imagem.id'],
+				arquivo = autor_it['imagem.arquivo'],
+			)
+			for autor_it in db(db.imagem.autor == autor).select(db.imagem.ALL, orderby=~db.imagem.data)
+		]
+	if (request.vars.email) and len(request.vars.email):
+		email = request.vars.email
+		emails = [
+			dict (
+				id = email_it['imagem.id'],
+				arquivo = email_it['imagem.arquivo'],
+			)
+			for email_it in db(db.imagem.email == email).select(db.imagem.ALL, orderby=~db.imagem.data)
+		]
+	if (request.vars.licenca) and len(request.vars.licenca):
+		licenca = request.vars.licenca
+		licencas = [
+			dict (
+				id = licenca_it['imagem.id'],
+				arquivo = licenca_it['imagem.arquivo'],
+			)
+			for licenca_it in db(db.imagem.licenca == licenca).select(db.imagem.ALL, orderby=~db.imagem.data)
+		]
+	if (request.vars.imagem) and len(request.vars.imagem):
+		imagem = request.vars.imagem
+		imagens = [
+			dict (
+				id = imagem_it['text.id'],
+				arquivo = imagem_it['imagem.arquivo'],
+			)
+			for imagem_it in db(db.imagem.arquivo.contains(imagem)).select(db.imagem.ALL, orderby=~db.imagem.data)
+		]
+
+	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Imagem: ', INPUT(_name='imagem'), BR(), INPUT(_type='submit'))
+
+	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, imagem=imagem, tags=tags, fontes=fontes, autores=autores, emails=emails, imagens=imagens, licencas=licencas, form=form)
 
 ## Utilizado para apagar e alterar imagens arbitrariamente
 #@auth.requires_membership('admin')

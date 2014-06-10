@@ -7,6 +7,32 @@
 <img src="{{=URL('imagens_download', args=imagem.arquivo)}}" />
 </div>
 </center>
+<br />
+<div class='ver_imagens_menu'>
+<ul>
+{{if len(imagem.fonte):}}
+{{=LI(SPAN("Fonte: ", A(imagem.fonte, _href=URL('imagens_buscar', vars=dict(fonte=imagem.fonte)))))}}
+{{pass}}
+{{if len(imagem.autor):}}
+{{=LI(SPAN("Autor: ", A(imagem.autor, _href=URL('imagens_buscar', vars=dict(autor=imagem.autor)))))}}
+{{pass}}
+{{if len(imagem.email):}}
+{{=LI(SPAN("E-mail: ", A(imagem.email, _href=URL('imagens_buscar', vars=dict(email=imagem.email)))))}}
+{{pass}}
+{{if len(tags):}}
+	<li>Tags: </li>
+	{{for tag in tags:}}
+		{{=LI(A(SPAN("#",tag.tag), _href=URL('imagens_buscar', vars=dict(tag=tag.tag))))}}
+	{{pass}}
+{{pass}}
+</ul>
+</div>
+<div class='ver_imagens_tags'>
+{{=H4('Adicionar tags')}}
+{{=H6(B('AVISO:'), ' Por enquanto é necessário adicionar UMA tag por vez. O desenvolvedor agradece a compreensão.')}}
+{{=formT}}
+</div>
+<div class='ver_imagens_comentarios'>
 {{if len(comentarios):}}
 	{{=H4('Comentários')}}
 	<p>
@@ -23,4 +49,6 @@
 {{pass}}
 {{=H3('Comentar')}}
 {{=formC}}
+</div>
+<script src="{{=URL('static','js/local.js')}}"></script>
 
