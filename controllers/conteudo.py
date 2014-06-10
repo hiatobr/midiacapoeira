@@ -225,7 +225,7 @@ def textos_ver():
 
 ## Utilizado para enviar blocos de texto
 def textos_enviar():
-	response.flash = 'Enviar texto para midiacapoeira.in'
+	response.flash = 'Enviar texto para ' + response.title
 	form = SQLFORM(db.texto).process(next=URL('textos'))
 	return dict(form=form)
 
@@ -238,7 +238,7 @@ def textos_download():
 #def user():
 #	return dict(form=auth())
 
-## Utilizado para buscar textos po tag, autor e email. Busca DENTRO de textos ainda não está feita.
+## Utilizado para buscar textos por tag, fonte, autor, email, licença. Busca DENTRO de textos ainda não está feita.
 def textos_buscar():
 	response.flash = 'Buscar em textos'
 
@@ -307,7 +307,7 @@ def textos_buscar():
 		textos = [
 			dict (
 				id = texto_it['text.id'],
-				conteudo = texto_it['text.conteudo'],
+				conteudo = texto_it['texto.conteudo'],
 			)
 			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.texto.data)
 		]
