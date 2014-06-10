@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Este arquivo deve ser movido para a base da instalação web2py
-# `cp routes.web2py.py ../../routes.py`
+# Copiar: `cp routes.web2py.py ../../routes.py`
+# Ou link simbólico: `cd ../.. && ln -s applications/midiacapoeira.in/routes.web2py.py routes.py`
 
 routers = dict(
 	BASE=dict(
