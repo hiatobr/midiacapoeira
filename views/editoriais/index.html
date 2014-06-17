@@ -1,0 +1,32 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{if 'message' in globals():}}
+{{=H3(message)}}
+{{=P(T('Página de editoriais em construção'))}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+{{block right_sidebar}}
+{{=H4(T('Links do projeto'))}}
+{{=UL(
+	LI(
+		A(
+			T('Pad'),
+			_href='http://padeiro.hi.ato.br/p/MidiaCapoeira',
+			_target='_blank',
+		),
+		':',
+		BR(),
+		T('Documento colaborativo com documentação - aberto a edições e contribuições!'),
+	),
+	LI(
+		A(
+			T('E-mail'),
+			_href='mailto:capoeira@riseup.net',
+		),
+		':',
+		BR(),
+		T('Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net'),
+	),
+)}}
+{{end}}
