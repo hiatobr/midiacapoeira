@@ -10,10 +10,11 @@ repositório deve ser copiado para o diretório **applications** do Web2Py.
 Receita de bolo:
 
 ```
-git clone https://github.com/web2py/web2py.git midiacapoeira.in
-cd midiacapoeira.in
-git remote add midiacapoeira.in https://github.com/hiatobr/midiacapoeira.in.git
-git pull midiacapoeira.in master
+git clone https://github.com/web2py/web2py.git
+cd web2py/applications
+git clone https://github.com/hiatobr/midiacapoeira.in.git midiacapoeira
+cd ..
+ln -s applications/midiacapoeira/routes.web2py.py routes.py
 python web2py.py
 ```
 
