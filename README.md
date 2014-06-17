@@ -12,7 +12,7 @@ Receita de bolo:
 ```
 git clone https://github.com/web2py/web2py.git
 cd web2py/applications
-git clone https://github.com/hiatobr/midiacapoeira.in.git midiacapoeira
+git clone https://github.com/hiatobr/midiacapoeira.git
 cd ..
 ln -s applications/midiacapoeira/routes.web2py.py routes.py
 python web2py.py
