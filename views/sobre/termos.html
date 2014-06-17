@@ -10,49 +10,67 @@
 {{=BEAUTIFY(response._vars)}}
 {{pass}}
 {{block right_sidebar}}
-{{=H4("Links do projeto")}}
+{{=H4('Todas as páginas')}}
 {{=UL(
 	LI(
 		A(
-			'Pad',
-			_href='http://padeiro.hi.ato.br/p/MidiaCapoeira',
-			_target='_blank',
+			'Sobre',
+			_href=URL('index'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Documento colaborativo com documentação - aberto a edições e contribuições!"),
 	),
 	LI(
 		A(
-			'Chat',
-			_href=URL(
-				a='init',
-				c='chat',
-				f='index',
-			),
+			'Contato',
+			_href=URL('contato'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Chat via WebIrc (freenode) - eu não fico o dia inteiro online, mande mensagem e aguarde"),
 	),
 	LI(
 		A(
-			'Código',
-			_href='https://github.com/hiatobr/midiacapoeira.in',
-			_target='_blank',
+			'Conteúdo',
+			_href=URL('conteudo'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Código fonte de midiacapoeira.in no Github."),
 	),
 	LI(
 		A(
-			'E-mail',
-			_href='mailto:capoeira@riseup.net',
+			'Editoriais',
+			_href=URL('editoriais'),
 		),
-		SPAN(":"),
-		BR(),
-		SPAN("Para entrar em contato diretamente com o autor, envie e-mail para capoeira@riseup.net"),
+	),
+	LI(
+		A(
+			'Licença',
+			_href=URL('licenca'),
+		),
+	),
+	LI(
+		A(
+			'Links',
+			_href=URL('links'),
+		),
+	),
+	LI(
+		A(
+			'Manifesto',
+			_href=URL('manifesto'),
+		),
+	),
+	LI(
+		A(
+			'Política',
+			_href=URL('politica'),
+		),
+	),
+	LI(
+		A(
+			'Referências',
+			_href=URL('referencias'),
+		),
+	),
+	LI(
+		A(
+			'Termos',
+			_href=URL('termos'),
+		),
 	),
 )}}
 {{end}}
