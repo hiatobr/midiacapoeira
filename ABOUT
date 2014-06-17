@@ -1,2 +1,23 @@
-Write something about this app.
-Developed with web2py.
+"midiacapoeira" é uma aplicativo projetado para ser utilizado como uma
+ferramenta de jornalismo.
+
+Utilizando esta ferramenta, é possível enviar e organizar conteúdo como por
+exemplo fotografias, textos, imagens e vídeos. É possível filtrar este
+conteúdo utilizando tags através de um sistema de busca.
+
+Também é possível fazer editoriais e associar imagens com textos, como é
+feito o jornalismo tradicional.
+
+Esta ferramenta permite fazer jornalismo de forma realmente livre e
+independente, entretanto, a mesma ferramenta tem potencial para fazer
+jornalismo da forma ortodoxa ou de formas alternativas, comercialmente,
+inclusive.
+
+Atualmente é utilizado no site da Mídia Capoeira
+(https://midiacapopeira.in).
+
+Para aprender sobre o funcionamento, veja o manual no arquivo README.md no
+repositório do GitHub (https://github.com/hiatobr/midiacapoeira).
+
+Desenvolvido com Web2Py (http://web2py.com).
+
