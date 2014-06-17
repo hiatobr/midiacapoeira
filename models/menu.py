@@ -19,6 +19,7 @@ response.meta.generator = 'Web2py Web Framework'
 
 response.menu = [
 	(T('Sobre'), False, domainname+'/sobre', []),
+	(T('Editoriais'), False, (domainname+'/editoriais'), []),
 	(T('Conteúdo'), False, (domainname+'/conteudo'), []),
 	(IMG(_src=URL('static','images/texto.png'), _alt='Narrativas textuais'), False, domainname+'/conteudo/textos', []),
 	(IMG(_src=URL('static','images/imagem.png'), _alt='Registros fotográficos'), False, domainname+'/conteudo/imagens', []),
