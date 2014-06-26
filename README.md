@@ -1,8 +1,8 @@
-Código fonte de midiacapoeira.in
+Código fonte de capoeira.li
 ===
 
 Este repositório contém o código do aplicativo Web2Py gerado em
-<https://midiacapoeira.in>.
+<https://capoeira.li>.
 
 Este repositório não contém todo o código de Web2Py. O conteúdo deste
 repositório deve ser copiado para o diretório **applications** do Web2Py.
@@ -19,7 +19,7 @@ python web2py.py
 ```
 
 Seguindo esta receita e acessando <http://localhost:8000> deveria
-aparecer a mesma coisa que tem em <https://midiacapoeira.in>.
+aparecer a mesma coisa que tem em <https://capoeira.li>.
 
 Se não der certo, leia a documentação do [Web2Py](http://web2py.com),
 entre em contato com capoeira@riseup.net, ou use o sistema do [GitHub](https://github.com)
@@ -28,7 +28,7 @@ para enviar problemas/sugestões/etc.
 [Web2Py](http://web2py.com) tem licença específica e o repositório
 encontra-se em <https://github.com/web2py/web2py>.
 
-Licença para o código fonte de <https://midiacapoeira.in>:
+Licença para o código fonte de <https://capoeira.li>:
 
 > Copywrong (W) 2014 Mídia Capoeira
 
