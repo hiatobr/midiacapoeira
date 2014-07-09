@@ -6,7 +6,6 @@
 routers = dict(
 	BASE=dict(
 		default_application='midiacapoeira',
-		default_controller='midiacapoeira',
 	),
 )
 
