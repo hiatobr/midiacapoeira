@@ -216,8 +216,13 @@ def textos_ver():
 	if formT.validate(keepvalues=True):
 		response.flash = 'Tag adicionada'
                 tags = request.post_vars.tag.strip().split(',')
-                for t in tags:
-                    db.texto_tag.insert(texto_id=texto.id, tag=t)
+
+                # Checar se as tags adicionadas já não existem.
+                s = db(db.texto_tag.texto_id==texto.id).select()
+                old_tags = [row.tag for row in s]
+                for tag in tags:
+                    if tag not in old_tags:
+                        db.texto_tag.insert(texto_id=texto.id, tag=tag)
 	elif formC.errors:
 		response.flash = 'Tag NÃO adicionada'
 
