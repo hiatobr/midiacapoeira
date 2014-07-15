@@ -213,8 +213,11 @@ def textos_ver():
 		submit_button = 'Enviar',
 		table_name = 'tags',
 	)
-	if formT.process().accepted:
+	if formT.validate(keepvalues=True):
 		response.flash = 'Tag adicionada'
+                tags = request.post_vars.tag.strip().split(',')
+                for t in tags:
+                    db.texto_tag.insert(texto_id=texto.id, tag=t)
 	elif formC.errors:
 		response.flash = 'Tag NÃO adicionada'
 
