@@ -215,7 +215,7 @@ def textos_ver():
 	)
 	if formT.validate(keepvalues=True):
 		response.flash = 'Tag adicionada'
-                tags = request.post_vars.tag.strip().split(',')
+                tags = map(lambda tag: tag.strip().strip('#'), request.post_vars.tag.split(','))
 
                 # Checar se as tags adicionadas já não existem.
                 s = db(db.texto_tag.texto_id==texto.id).select()
