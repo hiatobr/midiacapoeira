@@ -9,7 +9,7 @@
 <div class='index_imagens_grade'>
 <ul>
 {{for imagem in imagens:}}
-{{=LI(IMG(_src=URL('imagens_download', args=imagem.arquivo)), BR(), A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem.id)))}}
+{{=LI(IMG(_src=URL('static','images/miniatura.png')), BR(), A('Ver imagem / comentar', _href=URL('imagens_ver', args=imagem.id)))}}
 {{pass}}
 </ul>
 </div>
