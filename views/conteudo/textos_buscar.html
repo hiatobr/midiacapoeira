@@ -3,7 +3,15 @@
 <h1>Busca de textos</h1>
 <p>
 {{if (tag):}}
-Tag: #{{=SPAN(tag)}} ({{=A("remover", _href=URL('textos_buscar', vars=dict(tag='',fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto,)))}})
+Tags:
+{{for t in tag:}}
+#{{=SPAN(t)}}
+{{if len(tag) > 1:}}
+({{=A("remover", _href=URL('textos_buscar', vars=dict(tag=','.join(filter(lambda tg: tg != t, tag)),fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto,)))}})
+{{else:}}
+({{=A("remover", _href=URL('textos_buscar'))}})
+{{pass}}
+{{pass}}
 {{pass}}
 {{if (fonte):}}
 Fonte: {{=SPAN(fonte)}} ({{=A("remover", _href=URL('textos_buscar', vars=dict(tag=tag,fonte=fonte,autor=autor,email=email,licenca=licenca,texto=texto,)))}})
