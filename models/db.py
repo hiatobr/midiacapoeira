@@ -16,7 +16,7 @@ crud = Crud(db)
 from gluon import current
 current.db = db
 
-imageutils = local_import('imageutils', reload=True)
+imageutils = local_import('imageutils')
 
 ## Tabelas para Imagens
 db.define_table(
