@@ -12,6 +12,10 @@ auth.define_tables(username=True)
 crud = Crud(db)
 ## /Autenticação
 
+# Disponibilizando o banco de dados para módulos.
+from gluon import current
+current.db = db
+
 ## Tabelas para Imagens
 db.define_table(
 	'imagem',
