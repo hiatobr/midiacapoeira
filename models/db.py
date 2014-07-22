@@ -54,7 +54,7 @@ db.define_table(
                 'upload',
                 uploadseparate=True,
                 readable=False,
-                notnull=True,
+                #notnull=True,
         ),
 )
 db.define_table(
