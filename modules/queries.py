@@ -37,3 +37,4 @@ def tagQuery(tags, ctbl, ttbl, query = 0, op = 'or', field =
 
     except IndexError:
         return db(query).select(ctbl.ALL).as_list()
+

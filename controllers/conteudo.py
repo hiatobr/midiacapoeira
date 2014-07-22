@@ -108,7 +108,7 @@ def imagens_buscar():
 
 	if (request.vars.tag) and len(request.vars.tag):
 		tag = [t.strip(' #') for t in request.vars.tag.split(',')]
-		query = queries.tagQuery(list(tag), db.imagem, db.imagem_tag, field = 'imagem_id')
+		query = queries.tagQuery(list(tag), db.imagem, db.imagem_tag, field='imagem_id')
 		if (query):
 			tags = [
 				dict (
