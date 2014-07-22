@@ -62,6 +62,13 @@ def imagens_ver():
 	)
 	if formT.process().accepted:
 		response.flash = 'Tag adicionada'
+		tags = map(lambda tag: tag.strip(' #'), request.post_vars.tag.split(','))
+		# Checar se as tags adicionadas já não existem.
+		s = db(db.imagem_tag.imagem_id==imagem.id).select()
+		old_tags = [row.tag for row in s]
+		for tag in tags:
+			if tag not in old_tags:
+				db.imagem_tag.insert(imagem_id=imagem.id, tag=tag)
 	elif formC.errors:
 		response.flash = 'Tag NÃO adicionada'
 
@@ -100,15 +107,15 @@ def imagens_buscar():
 	imagens = dict()
 
 	if (request.vars.tag) and len(request.vars.tag):
-		tag = request.vars.tag
-		tags_it = db(db.imagem_tag.tag == tag).select(db.imagem_tag.imagem_id)
-		if (tags_it):
+		tag = [t.strip(' #') for t in request.vars.tag.split(',')]
+		query = queries.tagQuery(list(tag), db.imagem, db.imagem_tag, field = 'imagem_id')
+		if (query):
 			tags = [
 				dict (
-					id = db(db.imagem.id == tag_it.imagem_id).select(db.imagem.ALL, orderby=~db.imagem.data)[0]['imagem.id'],
-					arquivo = db(db.imagem.id == tag_it.imagem_id).select(db.imagem.ALL, orderby=~db.imagem.data)[0]['imagem.arquivo'],
+					id = txt['id'],
+					arquivo = txt['arquivo'],
 				)
-				for tag_it in tags_it
+				for txt in sorted(query, key=lambda k: k['data'])
 			]
 	if (request.vars.fonte) and len(request.vars.fonte):
 		fonte = request.vars.fonte
@@ -156,7 +163,7 @@ def imagens_buscar():
 			for imagem_it in db(db.imagem.arquivo.contains(imagem)).select(db.imagem.ALL, orderby=~db.imagem.data)
 		]
 
-	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Imagem: ', INPUT(_name='imagem'), BR(), INPUT(_type='submit'))
+	form = FORM('Tags: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Imagem: ', INPUT(_name='imagem'), BR(), INPUT(_type='submit'))
 
 	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, imagem=imagem, tags=tags, fontes=fontes, autores=autores, emails=emails, imagens=imagens, licencas=licencas, form=form)
 
@@ -217,14 +224,13 @@ def textos_ver():
 	)
 	if formT.validate(keepvalues=True):
 		response.flash = 'Tag adicionada'
-                tags = map(lambda tag: tag.strip(' #'), request.post_vars.tag.split(','))
-
-                # Checar se as tags adicionadas já não existem.
-                s = db(db.texto_tag.texto_id==texto.id).select()
-                old_tags = [row.tag for row in s]
-                for tag in tags:
-                    if tag not in old_tags:
-                        db.texto_tag.insert(texto_id=texto.id, tag=tag)
+		tags = map(lambda tag: tag.strip(' #'), request.post_vars.tag.split(','))
+		# Checar se as tags adicionadas já não existem.
+		s = db(db.texto_tag.texto_id==texto.id).select()
+		old_tags = [row.tag for row in s]
+		for tag in tags:
+			if tag not in old_tags:
+				db.texto_tag.insert(texto_id=texto.id, tag=tag)
 	elif formC.errors:
 		response.flash = 'Tag NÃO adicionada'
 
@@ -266,16 +272,15 @@ def textos_buscar():
 	textos = dict()
 
 	if (request.vars.tag) and len(request.vars.tag):
-            tag = [t.strip(' #') for t in request.vars.tag.split(',')]
-            query = queries.tagQuery(list(tag), db.texto, db.texto_tag)
-            
-            if (query):
-		tags = [
-			dict (
-				id = txt['id'],
-				conteudo = txt['conteudo'],
-			)
-                        for txt in sorted(query, key=lambda k: k['data'])
+		tag = [t.strip(' #') for t in request.vars.tag.split(',')]
+		query = queries.tagQuery(list(tag), db.texto, db.texto_tag)
+		if (query):
+			tags = [
+				dict (
+					id = txt['id'],
+					conteudo = txt['conteudo'],
+				)
+				for txt in sorted(query, key=lambda k: k['data'])
 			]
 	if (request.vars.fonte) and len(request.vars.fonte):
 		fonte = request.vars.fonte
