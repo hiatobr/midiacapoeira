@@ -16,8 +16,6 @@ crud = Crud(db)
 from gluon import current
 current.db = db
 
-imageutils = local_import('imageutils', reload=True)
-
 ## Tabelas para Imagens
 db.define_table(
 	'imagem',
@@ -49,6 +47,7 @@ db.define_table(
 	Field(
 		'email',
 	),
+<<<<<<< HEAD
         Field(
                 'thumbnail',
                 'upload',
@@ -56,6 +55,8 @@ db.define_table(
                 readable=False,
                 #notnull=True,
         ),
+=======
+>>>>>>> parent of fbbbc59... Geração de thumbnails
 )
 db.define_table(
 	'imagem_post',
@@ -91,7 +92,6 @@ db.define_table(
 )
 
 db.imagem.arquivo.requires = IS_NOT_EMPTY()
-db.imagem.thumbnail.compute = lambda row: imageutils.THUMB(row.arquivo, 200, 200)
 db.imagem_post.conteudo.requires = IS_NOT_EMPTY()
 db.imagem_tag.imagem_id.requires = IS_IN_DB(db, db.imagem.id)
 db.imagem_post.imagem_id.requires = IS_IN_DB(db, db.imagem.id)
