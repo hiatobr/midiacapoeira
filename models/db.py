@@ -12,6 +12,15 @@ auth.define_tables(username=True)
 crud = Crud(db)
 ## /Autenticação
 
+<<<<<<< HEAD
+=======
+# Disponibilizando o banco de dados para módulos.
+from gluon import current
+current.db = db
+
+imageutils = local_import('imageutils')
+
+>>>>>>> parent of 760610c... Revert "Eliminando reload=True"
 ## Tabelas para Imagens
 db.define_table(
 	'imagem',
