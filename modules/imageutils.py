@@ -52,13 +52,12 @@ def THUMB(image, nx=120, ny=120, gae=False, name='thumb'):
             from PIL import Image
             import os
             sub = image.split('.')
-            folder = os.path.abspath(request.folder)
-            path = '/uploads/%s.%s/%s/' % (sub[0], sub[1], sub[2][:2])
-            img = Image.open(folder + path + image)
+            path = 'uploads/%s.%s/%s/' % (sub[0], sub[1], sub[2][:2])
+            img = Image.open(os.path.join(request.folder, path, image))
             img.thumbnail((nx, ny), Image.ANTIALIAS)
             root, ext = os.path.splitext(image)
             thumb = '%s_%s%s' % (root, name, ext)
-            img.save(folder + path + thumb)
+            img.save(request.folder + path + thumb)
             return thumb
         else:
             return image
