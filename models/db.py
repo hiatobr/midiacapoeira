@@ -49,7 +49,7 @@ db.define_table(
                 'upload',
                 uploadseparate=True,
                 readable=False,
-                #notnull=True,
+                notnull=True,
         ),
 =======
 >>>>>>> parent of fbbbc59... Geração de thumbnails
