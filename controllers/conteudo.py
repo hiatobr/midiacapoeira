@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
 
-queries = local_import('queries')
+queries = local_import('queries', reload=True)
 
 def index():
 	response.flash = 'Acessar e enviar conteúdo para midiacapoeira.in'
