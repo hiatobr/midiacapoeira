@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
 
-queries = local_import('queries', reload=True)
-
 def index():
 	response.flash = 'Acessar e enviar conteúdo para midiacapoeira.in'
 	return dict(message='Acessar e enviar conteúdo para midiacapoeira.in')
@@ -266,16 +264,15 @@ def textos_buscar():
 	textos = dict()
 
 	if (request.vars.tag) and len(request.vars.tag):
-            tag = [t.strip(' #') for t in request.vars.tag.split(',')]
-            query = queries.tagQuery(list(tag), db.texto, db.texto_tag)
-            
-            if (query):
-		tags = [
-			dict (
-				id = txt['id'],
-				conteudo = txt['conteudo'],
-			)
-                        for txt in sorted(query, key=lambda k: k['data'])
+		tag = request.vars.tag
+		tags_it = db(db.texto_tag.tag == tag).select(db.texto_tag.texto_id)
+		if (tags_it):
+			tags = [
+				dict (
+					id = db(db.texto.id == tag_it.texto_id).select(db.texto.ALL, orderby=~db.texto.data)[0]['texto.id'],
+					conteudo = db(db.texto.id == tag_it.texto_id).select(db.texto.ALL, orderby=~db.texto.data)[0]['texto.conteudo'],
+				)
+				for tag_it in tags_it
 			]
 	if (request.vars.fonte) and len(request.vars.fonte):
 		fonte = request.vars.fonte
@@ -323,7 +320,7 @@ def textos_buscar():
 			for texto_it in db(db.texto.conteudo.contains(texto)).select(db.texto.ALL, orderby=~db.texto.data)
 		]
 
-	form = FORM('Tags: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
+	form = FORM('Tag: ', INPUT(_name='tag'), BR(), 'Autor: ', INPUT(_name='autor'), BR(), 'E-mail: ', INPUT(_name='email'), BR(), 'Conteúdo do texto: ', INPUT(_name='texto'), BR(), INPUT(_type='submit'))
 
 	return dict(tag=tag, fonte=fonte, autor=autor, email=email, licenca=licenca, texto=texto, tags=tags, fontes=fontes, autores=autores, emails=emails, textos=textos, licencas=licencas, form=form)
 
